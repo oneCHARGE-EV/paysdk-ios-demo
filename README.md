@@ -147,15 +147,15 @@ paySDK.delegate = self
 * Use following payment options.
  
 Payment Option | Example
-    --- | --- 
-    Direct Payment  |  [Direct Payment](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/DirectPay/README.md)
-    Webview Payment | [Webview Payment](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/Webview/README.md)
-    Add 3DS  | [3DS](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/3DS/README.md)
-    AliPay  | [AliPay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/AliPay/README.md)
-    Member Pay | [Member Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/MemberPay/README.md)
-    Installment Pay | [Installmet Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/InstallmentPay/README.md)
-    Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/SchedulePay/README.md)
-    Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PromoPay/README.md)
+--- | --- 
+Direct Payment | [Direct Payment](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/DirectPay/README.md)
+Webview Payment | [Webview Payment](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/Webview/README.md)
+Add 3DS  | [3DS](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/3DS/README.md)
+AliPay  | [AliPay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/AliPay/README.md)
+Member Pay | [Member Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/MemberPay/README.md)
+Installment Pay | [Installmet Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/InstallmentPay/README.md)
+Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/SchedulePay/README.md)
+Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-android-demo/blob/master/PromoPay/README.md)
 
 
 
