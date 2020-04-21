@@ -1,5 +1,5 @@
 
-## PaySDK -   
+## PaySDK   
 ##### iOS SDK which seamlessly integrate PayDollar Payment Gateway
 
 ### Overview
@@ -34,7 +34,9 @@ add the “AP_PaySDK” framework
   pod ‘AP_PaySDK’
 
 * Import sdk into the class
+
  import AP_PaySDK
+ 
  NOTE - Due to the limitation of App Transport Security(ATS) on http in iOS9.0, we need to add exception for paydollar.com, pesopay.com, siampay.com, alipay.com, alipayobjects.com in info.list
 
 ```
@@ -128,6 +130,7 @@ Create the paysdk.plist file in the app with the following attributes
     
 RSA Public Key(SDK_RSA_Publickey) :- Here you need to specify the RSA Public Key without header and Merchant_ID(optional)
 e.g
+
 ![image](https://user-images.githubusercontent.com/57220911/79866991-4112c300-83fb-11ea-82e9-4bf8a5575565.png)
 
 ### Initialize PaySdk
@@ -143,7 +146,6 @@ paySDK.delegate = self
 
 
 ### Initialize Payload
-
 
 * Use following payment options.
  
