@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KAw-2J-erG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -15,26 +15,74 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9e-Vx-hpD">
-                                <rect key="frame" x="192" y="433" width="30" height="30"/>
-                                <state key="normal" title="Pay"/>
-                                <connections>
-                                    <action selector="pay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Df-s3-0bN"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="C9e-Vx-hpD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MRf-OT-PtL"/>
-                            <constraint firstItem="C9e-Vx-hpD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YwW-81-8Qw"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="FpU-3q-qvp">
+                        <barButtonItem key="leftBarButtonItem" title="Merchant Loader : OFF" id="4lU-mR-sm5">
+                            <connections>
+                                <action selector="merchantLoaderUsage:" destination="BYZ-38-t0r" id="a8Z-32-pgN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Random UI : OFF" id="PmW-TK-j4q">
+                            <connections>
+                                <action selector="applyCustom:" destination="BYZ-38-t0r" id="x0R-7B-mAY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="127"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="126.5625"/>
+        </scene>
+        <!--View Controller2-->
+        <scene sceneID="D2k-Ih-WdI">
+            <objects>
+                <viewController storyboardIdentifier="ViewController2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lj9-Eu-OGs" customClass="ViewController2" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Frb-Na-FmN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="cV5-RT-TwR">
+                                <rect key="frame" x="30" y="271" width="354" height="354"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cV5-RT-TwR" secondAttribute="height" id="Ape-8h-eBg"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cV5-RT-TwR" firstAttribute="centerY" secondItem="Frb-Na-FmN" secondAttribute="centerY" id="6Yt-GY-sdF"/>
+                            <constraint firstItem="cV5-RT-TwR" firstAttribute="centerX" secondItem="Frb-Na-FmN" secondAttribute="centerX" id="CXv-EB-IK0"/>
+                            <constraint firstItem="qAg-Dx-nbo" firstAttribute="trailing" secondItem="cV5-RT-TwR" secondAttribute="trailing" constant="30" id="RXt-D6-Gv7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qAg-Dx-nbo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yA1-Rz-vTS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1848" y="154"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2LT-dq-eRN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KAw-2J-erG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T3t-57-iNd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Q1G-x9-16h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sUC-vd-BhF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="img" width="848" height="315"/>
+    </resources>
 </document>
