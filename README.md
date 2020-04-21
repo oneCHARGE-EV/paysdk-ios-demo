@@ -11,11 +11,11 @@
 
 ### Get Started
 
-1. [PaySdk Configuration](#paysdk_configuration)
-2. [Add Security Key](#add_security_key)
-3. [Initialize PaySdk](#initialize_paysdk)
-4. [Initialize Payload](#initialize_payload)
-5. [Collect Payment Result](#collect_payment_result)
+1. [PaySdk Configuration](#paysdk-configuration)
+2. [Add Security Key](#add-security-key)
+3. [Initialize PaySdk](#initialize-paysdk)
+4. [Initialize Payload](#initialize-payload)
+5. [Collect Payment Result](#collect-payment-result)
 
 ### PaySdk Configuration
 
