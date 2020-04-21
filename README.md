@@ -35,7 +35,7 @@ add the “AP_PaySDK” framework
 
 * Import sdk into the class
 
- import AP_PaySDK
+   import AP_PaySDK
  
  NOTE - Due to the limitation of App Transport Security(ATS) on http in iOS9.0, we need to add exception for paydollar.com, pesopay.com, siampay.com, alipay.com, alipayobjects.com in info.list
 
