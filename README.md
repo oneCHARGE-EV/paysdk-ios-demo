@@ -165,8 +165,11 @@ Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/mast
 ### Collect Payment Result
 
 ```
-             funcpaymentResult(result: PayResult) {
-              }
+    func paymentResult(result: PayResult) {
+     //process result here
+     
+    }
+    
 ```
 
 ### Support
