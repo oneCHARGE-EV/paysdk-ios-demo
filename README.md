@@ -30,6 +30,7 @@ iOS Version: 11.0 and above
 add the “AP_PaySDK” framework 
 
 * Or use CocoaPods. CocoaPods is a dependency manager for Cocoa projects. For usage and installation instructions, visit https://guides.cocoapods.org/using/using-cocoapods.html for more detail. To integrate PaySDK into your Xcode project using CocoaPods, specify it in your Podfile:
+
 pod ‘AP_PaySDK’
 
 * Import sdk into the class
