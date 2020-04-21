@@ -1,6 +1,6 @@
 
 
-# Promo Pay
+# Schedule Pay
 
 ```
 paySDK.cardDetails = CardDetails(cardHolderName: “firstcard”,
@@ -24,10 +24,20 @@ secureMethod: SecureMethod.NONE,
 secureHashSecret: "",
 addNewMember: false,
 
-extraData :  extraData: ["promotion ": "T",
-"promotionCode ": "TEST1",
-"promotionRuleCode " : " TESTR25",
-"promotionOriginalAmt ":""]
+extraData: ["appId" : "SP",
+"appRef" : "2018102409220001",
+"schType" : "Day",
+"schStatus" : "Active",
+"nSch" : "1",
+"sMonth" : "4",
+"sDay" : "26",
+"sYear" : "2019",
+"eMonth" : "",
+"eDay" : "",
+"eYear" : "",
+"name" : "Name",
+"email" : "kit@igears.com.hk"])
+
 
 
 extraData :[])
