@@ -4,17 +4,22 @@ platform :ios, '11.0'
 target 'DemoApp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'AP_PaySDK'
+  pod 'Eureka'
+  pod 'AP_PaySDK', '2.0.1'
+  pod 'NVActivityIndicatorView'
+  pod 'Material'
 
-  # Pods for DemoApp
 
 end
 
 target 'DemoApp-Objc' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'AP_PaySDK'
+  pod 'Eureka'
+  pod 'AP_PaySDK', '2.0.1'
+  pod 'NVActivityIndicatorView'
+  pod 'Material''
 
-  # Pods for DemoApp
+
 
 end
