@@ -1,1 +1,10 @@
 
+
+# Member Pay
+
+```
+            
+                paySDK.process();
+
+```
+
