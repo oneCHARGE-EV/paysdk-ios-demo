@@ -149,7 +149,7 @@ paySDK.delegate = self
 Payment Option | Example
 --- | --- 
 Direct Payment | [Direct Payment](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/DirectPay/README.md)
-Webview Payment | [Webview Payment](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/Webview/README.md)
+Webview Payment | [Webview Payment](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/WebView/README.md)
 Add 3DS  | [3DS](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/3DS/README.md)
 AliPay  | [AliPay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/AliPay/README.md)
 Member Pay | [Member Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/MemberPay/README.md)
