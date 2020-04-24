@@ -28,15 +28,15 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                             "appRef" : "2018102409220001",
                                             "schType" : "Day",
                                             "schStatus" : "Active",
-                                            "nSch" : "1",
-                                            "sMonth" : "4",
-                                            "sDay" : "26",
-                                            "sYear" : "2019",
+                                            "nSch" : "3",
+                                            "sMonth" : "04",
+                                            "sDay" : "20",
+                                            "sYear" : "2021",
                                             "eMonth" : "",
                                             "eDay" : "",
                                             "eYear" : "",
-                                            "name" : "Name",
-                                            "email" : "kit@igears.com.hk"])
+                                            "name" : "Julius Jha",
+                                            "email" : "julius.jha@gmail.com"])
 
 
 paySDK.process()
