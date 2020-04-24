@@ -31,7 +31,10 @@ threeDSParams.threeDSCustomerEmail = "example@example.com"
 threeDSParams.threeDSDeliveryEmail = "example1@example.com"
 
 paySDK.paymentDetails.threeDSParams = threeDSParams
+
 paySDK.process();
 
 ```
 
+<img width="220" alt="image" src="https://user-images.githubusercontent.com/57219862/80250494-9c5de300-8691-11ea-8f69-70cc480f38ca.png"> <img width="220" alt="image" src="https://user-images.githubusercontent.com/57219862/80250511-a54eb480-8691-11ea-8162-f1cb006680e4.png">
+<img width="220" alt="image" src="https://user-images.githubusercontent.com/57219862/80250532-ae3f8600-8691-11ea-90ab-4e887e6e7391.png">
