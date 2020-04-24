@@ -27,4 +27,4 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
 
 paySDK.process()
 ```
-![image]https://user-images.githubusercontent.com/57219862/80215987-00b18000-865b-11ea-85ef-17443294c7ba.png
+<img width="223" alt="image" src="https://user-images.githubusercontent.com/57219862/80222729-e7153600-8664-11ea-93b6-82d7e2bdf318.png">
