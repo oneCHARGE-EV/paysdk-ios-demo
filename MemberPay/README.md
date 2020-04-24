@@ -34,6 +34,8 @@ paySDK.process()
 
 ```
 
+<img width="243" alt="image" src="https://user-images.githubusercontent.com/57219862/80246803-a7614500-868a-11ea-8563-f912d1696ec3.png">
+
 
 ## Old Member -
 
@@ -67,3 +69,4 @@ paySDK.process()
 
 ```
 
+<img width="248" alt="image" src="https://user-images.githubusercontent.com/57219862/80247989-b1844300-868c-11ea-9088-e3872811ee09.png">
