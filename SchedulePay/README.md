@@ -44,3 +44,4 @@ paySDK.process()
 
 ```
 
+<img width="252" alt="image" src="https://user-images.githubusercontent.com/57219862/80248316-4b4bf000-868d-11ea-87cc-7c86135fcc8c.png">
