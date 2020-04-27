@@ -7,7 +7,7 @@
 
 * In AppDelegate file add
 
-varpaySDK = PaySDKClass.shared
+var paySDK = PaySDKClass.shared
 
 
 func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -22,20 +22,20 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 ```
 
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
-envType: EnvType.SANDBOX,
-amount: "10",
-payGate: PayGate.PAYDOLLAR,
-currCode:currencyCode.HKD,
-payType: payType.NORMAL_PAYMENT,
-orderRef: "560200353Ref",
-payMethod: "ALIPAYHKAPP",
-lang: Language.ENGLISH, 
-merchantId: "560200353",
-remark: "test",
-secureMethod: SecureMethod.SHA_1,
-secureHashSecret: "WrWbmbTLsADtv2YipcZ2Q8klAqnKaXaQ",
-addNewMember: false,
-extraData : [:])
+				envType: EnvType.SANDBOX,
+				amount: "10",
+				payGate: PayGate.PAYDOLLAR,
+				currCode:currencyCode.HKD,
+				payType: payType.NORMAL_PAYMENT,
+				orderRef: "560200353Ref",
+				payMethod: "ALIPAYHKAPP",
+				lang: Language.ENGLISH, 
+				merchantId: "560200353",
+				remark: "test",
+				secureMethod: SecureMethod.SHA_1,
+				secureHashSecret: "WrWbmbTLsADtv2YipcZ2Q8klAqnKaXaQ",
+				addNewMember: false,
+				extraData : [:])
 
 paySDK.process();
 
