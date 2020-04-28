@@ -20,8 +20,10 @@ class ViewController: FormViewController {
     var currCode : CurrencyCode?
     var isUIRamdom : Bool = false
     var isLoaderRamdom : Bool = false
+    var VASService : String = ""
     let loadview = LoadingView()
-    
+    var VASData : [String : Any]?
+    var threeDSParams : ThreeDSParams?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +50,10 @@ class ViewController: FormViewController {
         paySDK.delegate = self
         paySDK.isBioMetricRequired = false
         paySDK.useSDKProgressScreen = true
+        let serialGroup = DispatchGroup()
         //self.paySDK.setPublicKey(str: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArvxLT052VCC+QgQzh3SHuwMtD6qW4FG0pC8BLumsqZPZ6vV3cRx3np44sSbA5lllXtbIzodvc9T2sYdLQDpFG3I7IdhxE4XG05xSOQCeht7uz+s8DMlYJJjzJV2hBNEdNtjFkA2JYoxoBzsjIBTj4kTwFSZBVZCfq6HvuOGpKjzqsHkQXlXya5xzIBLjYduc5RBnuyHIeeQiSsuI2leg+RmQsUt84ykmrpTEpoPID0/vBwtHIilpUCGz88vwgN5SHTRTqG5naGjLR59pebYauKPuKRx7GYqGMbaXi8JYN7UdsipW9qCXY1b27Lq9ESVpbIgp85nLY66ISsKcmpheIwIDAQAB")
         self.currCode = CurrencyCode.HKD
-        form1 =  form +++ Section("card details")
+        form1 =  form +++ Section("payment details")
             <<< SegmentedRow<String>() { row in
                 row.options = ["PAYDOLLAR","PESOPAY","SIAMPAY"]
                 row.value = "PAYDOLLAR"
@@ -110,36 +113,36 @@ class ViewController: FormViewController {
                 $0.placeholder = "And numbers here"
                 $0.value = "1"
             }
-            <<< PhoneRow() {
+            <<< PasswordRow() {
                 $0.title = "security code"
                 $0.placeholder = "And numbers here"
                 $0.value = "123"
             }
-            <<< PhoneRow() {
-                $0.title = "installment_period"
-                $0.placeholder = "And numbers here"
-            }
-            <<< TextRow() { row in
-                row.title = "memberPay_memberId"
-                //row.value = "member03"
-                row.placeholder = "Enter text here"
-            }
-            <<< TextRow() { row in
-                row.title = "promotionCode"
-                row.placeholder = "Enter text here"
-            }
-            <<< TextRow() { row in
-                row.title = "promotionRuleCode"
-                row.placeholder = "Enter text here"
-            }
-            <<< PhoneRow() {
-                $0.title = "promotionOriginalAmt"
-                $0.placeholder = "And numbers here"
-            }
-            <<< TextRow() { row in
-                row.title = "memberPayToken"
-                row.placeholder = "Enter text here"
-            }
+//            <<< PhoneRow() {
+//                $0.title = "installment_period"
+//                $0.placeholder = "And numbers here"
+//            }
+//            <<< TextRow() { row in
+//                row.title = "memberPay_memberId"
+//                //row.value = "member03"
+//                row.placeholder = "Enter text here"
+//            }
+//            <<< TextRow() { row in
+//                row.title = "promotionCode"
+//                row.placeholder = "Enter text here"
+//            }
+//            <<< TextRow() { row in
+//                row.title = "promotionRuleCode"
+//                row.placeholder = "Enter text here"
+//            }
+//            <<< PhoneRow() {
+//                $0.title = "promotionOriginalAmt"
+//                $0.placeholder = "And numbers here"
+//            }
+//            <<< TextRow() { row in
+//                row.title = "memberPayToken"
+//                row.placeholder = "Enter text here"
+//            }
             <<< PickerInputRow<String>("Picker Input Row1") {
                 $0.title = "Currency"
                 $0.options = ["HKD","RMB","USD","SGD","CNY","YEN","JPY","TWD","AUD","EUR","GBP","CAD","MOP","PHP","THB","IDR","BND","MYR","BRL","INR","TRY","ZAR","VND","LKR","KWD","NZD"]
@@ -191,9 +194,57 @@ class ViewController: FormViewController {
                 self.processDirect(nil)
             })
             <<< ButtonRow() { (row: ButtonRow) in
-                row.title = "webview"
+                row.title = "Webview"
             }.onCellSelection({ (str, row) in
                 self.processHosted(nil)
+            })
+            <<< ButtonRow() { (row: ButtonRow) in
+                row.title = "Installment Pay"
+            }.onCellSelection({ (str, row) in
+                    self.VASService = row.title!
+                    let addVC = VASController()
+                    addVC.VAS = self.VASService
+                    addVC.viewController1 = self
+                    self.navigationController?.pushViewController(addVC, animated: true)
+            })
+            <<< ButtonRow() { (row: ButtonRow) in
+                row.title = "Promo Pay"
+            }.onCellSelection({ (str, row) in
+                self.VASService = row.title!
+                let addVC = VASController()
+                addVC.VAS = self.VASService
+                addVC.viewController1 = self
+                self.navigationController?.pushViewController(addVC, animated: true)
+                //self.processHosted(nil)
+            })
+            <<< ButtonRow() { (row: ButtonRow) in
+                row.title = "Schedule Pay"
+            }.onCellSelection({ (str, row) in
+                self.VASService = row.title!
+                let addVC = VASController()
+                addVC.VAS = self.VASService
+                addVC.viewController1 = self
+                self.navigationController?.pushViewController(addVC, animated: true)
+                //self.processDirect(nil)
+            })
+            <<< ButtonRow() { (row: ButtonRow) in
+                row.title = "New Member Pay"
+            }.onCellSelection({ (str, row) in
+                self.VASService = row.title!
+                let addVC = VASController()
+                addVC.VAS = self.VASService
+                addVC.viewController1 = self
+                self.navigationController?.pushViewController(addVC, animated: true)
+            })
+            <<< ButtonRow() { (row: ButtonRow) in
+                row.title = "Old Member Pay"
+            }.onCellSelection({ (str, row) in
+                self.VASService = row.title!
+                let addVC = VASController()
+                addVC.VAS = self.VASService
+                addVC.viewController1 = self
+                self.navigationController?.pushViewController(addVC, animated: true)
+                //self.processHosted(nil)
             })
             <<< ButtonRow() { (row: ButtonRow) in
                 row.title = "WECHATAPP"
@@ -208,7 +259,12 @@ class ViewController: FormViewController {
             <<< ButtonRow() { (row: ButtonRow) in
                 row.title = "THREEDS2"
             }.onCellSelection({ (str, row) in
-                self.threeDS()
+                self.VASService = row.title!
+                let addVC = VASController()
+                addVC.VAS = self.VASService
+                addVC.viewController1 = self
+                self.navigationController?.pushViewController(addVC, animated: true)
+//                self.threeDS()
             })
             <<< ButtonRow() { (row: ButtonRow) in
                 row.title = "ALIPAYHKAPP"
@@ -231,6 +287,36 @@ class ViewController: FormViewController {
                 self.eASYPAYMENTFORM()
             })
         
+        serialGroup.notify(queue: DispatchQueue.main) {
+
+           print("All Groups request completed.....")
+
+        }
+        print("1: ",form1?.allSections[0][1].title as? String)
+        print("2: ",form1?.allSections[0][2].title as? String)
+        print("3: ",form1?.allSections[0][3].title as? String)
+        print("4: ",form1?.allSections[0][4].title as? String)
+        print("5: ",form1?.allSections[0][5].title as? String)
+        print("6: ",form1?.allSections[0][6].title as? String)
+        print("7: ",form1?.allSections[0][7].title as? String)
+        print("8: ",form1?.allSections[0][8].title as? String)
+        print("9: ",form1?.allSections[0][9].title as? String)
+        print("10: ",form1?.allSections[0][10].title as? String)
+        print("11: ",form1?.allSections[0][11].title as? String)
+        print("12: ",form1?.allSections[0][12].title as? String)
+        print("13: ",form1?.allSections[0][13].title as? String)
+        print("14: ",form1?.allSections[0][14].title as? String)
+        print("15: ",form1?.allSections[0][15].title as? String)
+        print("16: ",form1?.allSections[0][16].title as? String)
+        print("17: ",form1?.allSections[0][17].title as? String)
+        print("18: ",form1?.allSections[0][18].title as? String)
+        print("19: ",form1?.allSections[0][19].title as? String)
+        print("20: ",form1?.allSections[0][20].title as? String)
+        print("21: ",form1?.allSections[0][21].title as? String)
+        print("22: ",form1?.allSections[0][22].title as? String)
+        print("23: ",form1?.allSections[0][23].title as? String)
+        print("24: ",form1?.allSections[0][24].title as? String)
+        print("25: ",form1?.allSections[0][25].title as? String)
     }
     
     
@@ -379,57 +465,68 @@ class ViewController: FormViewController {
                                                             expYear: (form1?.allSections[0][6].baseValue as? String) ?? "",
                                                             securityCode: (form1?.allSections[0][8].baseValue as? String) ?? "")
         }
-        let threeDSParams = ThreeDSParams()
-        threeDSParams.threeDSCustomerEmail = "example@example.com"
-        threeDSParams.threeDSDeliveryEmail = "example@example.com"
-        threeDSParams.threeDSMobilePhoneCountryCode = "852"
-        threeDSParams.threeDSMobilePhoneNumber = "9000000000"
-        threeDSParams.threeDSHomePhoneCountryCode = "852"
-        threeDSParams.threeDSHomePhoneNumber = "8000000000"
-        threeDSParams.threeDSWorkPhoneCountryCode = "852"
-        threeDSParams.threeDSWorkPhoneNumber = "7000000000"
-        threeDSParams.threeDSBillingCountryCode = "344"
-        threeDSParams.threeDSBillingState = ""
-        threeDSParams.threeDSBillingCity = "Hong Kong"
-        threeDSParams.threeDSBillingLine1 = "threeDSBillingLine1"
-        threeDSParams.threeDSBillingLine2 = "threeDSBillingLine2"
-        threeDSParams.threeDSBillingLine3 = "threeDSBillingLine3"
-        threeDSParams.threeDSBillingPostalCode = "121245"
-        threeDSParams.threeDSShippingDetails = "01"
-        threeDSParams.threeDSShippingCountryCode = "344"
-        threeDSParams.threeDSShippingState = ""
-        threeDSParams.threeDSShippingCity = "Hong Kong"
-        threeDSParams.threeDSShippingLine1 = "threeDSShippingLine1"
-        threeDSParams.threeDSShippingLine2 = "threeDSShippingLine2"
-        threeDSParams.threeDSShippingLine3 = "threeDSShippingLine3"
-        threeDSParams.threeDSAcctCreateDate = "20190401"
-        threeDSParams.threeDSAcctAgeInd = "01"
-        threeDSParams.threeDSAcctLastChangeDate = "20190401"
-        threeDSParams.threeDSAcctLastChangeInd = "01"
-        threeDSParams.threeDSAcctPwChangeDate = "20190401"
-        threeDSParams.threeDSAcctPwChangeInd = "01"
-        threeDSParams.threeDSAcctPurchaseCount = "10"
-        threeDSParams.threeDSAcctCardProvisionAttempt = "0"
-        threeDSParams.threeDSAcctNumTransDay = "0"
-        threeDSParams.threeDSAcctNumTransYear = "1"
-        threeDSParams.threeDSAcctPaymentAcctDate = "20190401"
-        threeDSParams.threeDSAcctPaymentAcctInd = "01"
-        threeDSParams.threeDSAcctShippingAddrLastChangeDate = "20190401"
-        threeDSParams.threeDSAcctShippingAddrLastChangeInd = "01"
-        threeDSParams.threeDSAcctIsShippingAcctNameSame = "T"
-        threeDSParams.threeDSAcctIsSuspiciousAcct = "F"
-        threeDSParams.threeDSAcctAuthMethod = "01"
-        threeDSParams.threeDSAcctAuthTimestamp = "20190401"
-        threeDSParams.threeDSDeliveryTime = "04"
-        threeDSParams.threeDSPreOrderReason = "01"
-        threeDSParams.threeDSPreOrderReadyDate = "20190401"
-        threeDSParams.threeDSGiftCardAmount = "5"
-        threeDSParams.threeDSGiftCardCurr = "344"
-        threeDSParams.threeDSGiftCardCount = "1"
-        threeDSParams.threeDSSdkMaxTimeout = "05"
-        threeDSParams.threeDSSdkInterface = "03"
+//        let threeDSParams = ThreeDSParams()
+//        threeDSParams.threeDSCustomerEmail = "example@example.com"
+//        threeDSParams.threeDSDeliveryEmail = "example@example.com"
+//        threeDSParams.threeDSMobilePhoneCountryCode = "852"
+//        threeDSParams.threeDSMobilePhoneNumber = "9000000000"
+//        threeDSParams.threeDSHomePhoneCountryCode = "852"
+//        threeDSParams.threeDSHomePhoneNumber = "8000000000"
+//        threeDSParams.threeDSWorkPhoneCountryCode = "852"
+//        threeDSParams.threeDSWorkPhoneNumber = "7000000000"
+//        threeDSParams.threeDSBillingCountryCode = "344"
+//        threeDSParams.threeDSBillingState = ""
+//        threeDSParams.threeDSBillingCity = "Hong Kong"
+//        threeDSParams.threeDSBillingLine1 = "threeDSBillingLine1"
+//        threeDSParams.threeDSBillingLine2 = "threeDSBillingLine2"
+//        threeDSParams.threeDSBillingLine3 = "threeDSBillingLine3"
+//        threeDSParams.threeDSBillingPostalCode = "121245"
+//        threeDSParams.threeDSShippingDetails = "01"
+//        threeDSParams.threeDSShippingCountryCode = "344"
+//        threeDSParams.threeDSShippingState = ""
+//        threeDSParams.threeDSShippingCity = "Hong Kong"
+//        threeDSParams.threeDSShippingLine1 = "threeDSShippingLine1"
+//        threeDSParams.threeDSShippingLine2 = "threeDSShippingLine2"
+//        threeDSParams.threeDSShippingLine3 = "threeDSShippingLine3"
+//        threeDSParams.threeDSAcctCreateDate = "20190401"
+//        threeDSParams.threeDSAcctAgeInd = "01"
+//        threeDSParams.threeDSAcctLastChangeDate = "20190401"
+//        threeDSParams.threeDSAcctLastChangeInd = "01"
+//        threeDSParams.threeDSAcctPwChangeDate = "20190401"
+//        threeDSParams.threeDSAcctPwChangeInd = "01"
+//        threeDSParams.threeDSAcctPurchaseCount = "10"
+//        threeDSParams.threeDSAcctCardProvisionAttempt = "0"
+//        threeDSParams.threeDSAcctNumTransDay = "0"
+//        threeDSParams.threeDSAcctNumTransYear = "1"
+//        threeDSParams.threeDSAcctPaymentAcctDate = "20190401"
+//        threeDSParams.threeDSAcctPaymentAcctInd = "01"
+//        threeDSParams.threeDSAcctShippingAddrLastChangeDate = "20190401"
+//        threeDSParams.threeDSAcctShippingAddrLastChangeInd = "01"
+//        threeDSParams.threeDSAcctIsShippingAcctNameSame = "T"
+//        threeDSParams.threeDSAcctIsSuspiciousAcct = "F"
+//        threeDSParams.threeDSAcctAuthMethod = "01"
+//        threeDSParams.threeDSAcctAuthTimestamp = "20190401"
+//        threeDSParams.threeDSDeliveryTime = "04"
+//        threeDSParams.threeDSPreOrderReason = "01"
+//        threeDSParams.threeDSPreOrderReadyDate = "20190401"
+//        threeDSParams.threeDSGiftCardAmount = "5"
+//        threeDSParams.threeDSGiftCardCurr = "344"
+//        threeDSParams.threeDSGiftCardCount = "1"
+//        threeDSParams.threeDSSdkMaxTimeout = "05"
+//        threeDSParams.threeDSSdkInterface = "03"
         paySDK.paymentDetails.threeDSParams = threeDSParams
         paySDK.process()
+    }
+    
+    func VASValue(extraData: [String : Any] ) {
+        VASData = extraData
+        print("*********",extraData)
+    }
+    
+    func setThreeDSParams(params: ThreeDSParams?){
+//        threeDSParams = ThreeDSParams()
+        threeDSParams = params
+        print("####", threeDSParams)
     }
     
     func getValues() -> [String: Any] {
@@ -467,35 +564,43 @@ class ViewController: FormViewController {
             }
             paySDK.uiCustomization = customization
         }
-        let aa = form1?.allSections[0][17] as! TextAreaRow
+        
+        let aa = form1?.allSections[0][11] as! TextAreaRow
         aa.value = ""
         aa.reload()
         let aa1 = form1?.allSections[0][2] as! TextRow
         aa1.value = String(format: "%.0f", NSDate().timeIntervalSince1970 * 1000)
         aa1.reload()
         var extraData = [String: Any]()
-        if form1?.allSections[0][9].baseValue != nil {
-            extraData["installment_service"] = "T"
-            extraData["installment_period"] = (form1?.allSections[0][9].baseValue as? String) ?? ""
-            extraData["installOnly"] = "T"
+        if self.VASService == "Installment Pay" || self.VASService == "Schedule Pay" || self.VASService == "Promo Pay" || self.VASService == "New Member Pay" || self.VASService == "Old Member Pay" {
+            extraData = VASData!
         }
-        if form1?.allSections[0][10].baseValue != nil {
-            extraData["memberPay_memberId"] = form1?.allSections[0][10].baseValue
-            extraData["memberPay_service"] = "T"
-            if form1?.allSections[0][14].baseValue != nil {
-                extraData["memberPay_token"] = form1?.allSections[0][14].baseValue
-                extraData["addNewMember"] = false
-            } else {
-                extraData["addNewMember"] = true
-            }
-        }
-        if form1?.allSections[0][11].baseValue != nil {
-            extraData["promotion"] = "T"
-            extraData["promotionCode"] = form1?.allSections[0][11].baseValue
-            extraData["promotionRuleCode"] = form1?.allSections[0][12].baseValue
-            extraData["promotionOriginalAmt"] = form1?.allSections[0][13].baseValue
-            
-        }
+//            extraData["installment_service"] = "T"
+//            extraData["installment_period"] = (form1?.allSections[0][1].baseValue as? String) ?? ""
+//            extraData["installOnly"] = (form1?.allSections[0][2].baseValue as? String) ?? ""
+        //}
+//        if form1?.allSections[0][9].baseValue != nil {
+//            extraData["installment_service"] = "T"
+//            extraData["installment_period"] = (form1?.allSections[0][9].baseValue as? String) ?? ""
+//            extraData["installOnly"] = "T"
+//        }
+//        if form1?.allSections[0][10].baseValue != nil {
+//            extraData["memberPay_memberId"] = form1?.allSections[0][10].baseValue
+//            extraData["memberPay_service"] = "T"
+//            if form1?.allSections[0][14].baseValue != nil {
+//                extraData["memberPay_token"] = form1?.allSections[0][14].baseValue
+//                extraData["addNewMember"] = false
+//            } else {
+//                extraData["addNewMember"] = true
+//            }
+//        }
+//        if form1?.allSections[0][11].baseValue != nil {
+//            extraData["promotion"] = "T"
+//            extraData["promotionCode"] = form1?.allSections[0][11].baseValue
+//            extraData["promotionRuleCode"] = form1?.allSections[0][12].baseValue
+//            extraData["promotionOriginalAmt"] = form1?.allSections[0][13].baseValue
+//
+//        }
         
         switch (form1?.allSections[0][0].baseValue as? String) ?? "" {
         case "PAYDOLLAR": payGateForPG = PayGate.PAYDOLLAR
@@ -507,7 +612,7 @@ class ViewController: FormViewController {
         default: payGateForPG = PayGate.PAYDOLLAR
             break
         }
-        switch (form1?.allSections[0][16].baseValue as? String) ?? "" {
+        switch (form1?.allSections[0][10].baseValue as? String) ?? "" {
         //"BioMetric","Non-BioMetric"
         case "BioMetric": paySDK.isBioMetricRequired = true
         //bb = PayGate.PAYDOLLAR
@@ -532,7 +637,6 @@ class ViewController: FormViewController {
             paySDK.useSDKProgressScreen = false
         }
     }
-    
 }
 
 
@@ -540,7 +644,7 @@ extension ViewController : PaySDKDelegate {
     
     func paymentResult(result: PayResult) {
         print(self.toJson(result: result))
-        let aa = form1?.allSections[0][17] as! TextAreaRow
+        let aa = form1?.allSections[0][11] as! TextAreaRow
         aa.value = self.toJson(result: result)
         aa.reload()
         //aa.header?.title =
@@ -573,6 +677,7 @@ extension ViewController : PaySDKDelegate {
     }
 }
 
+
 class LoadingView: UIViewController ,NVActivityIndicatorViewable {
     
     func startLoad() {
@@ -586,8 +691,12 @@ class LoadingView: UIViewController ,NVActivityIndicatorViewable {
         stopAnimating()
     }
 }
+
+
 class ViewController2: UIViewController {
     override func viewDidLoad() {
         
     }
 }
+
+
