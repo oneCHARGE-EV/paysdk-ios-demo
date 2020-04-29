@@ -25,17 +25,17 @@ Merchant must provide application bundle id and universal link of app (optional)
 		</dict>
 	</array>
 ```
-![image] <img width="417" alt="image" src="https://user-images.githubusercontent.com/57219862/80564609-e20d0980-8a0b-11ea-9779-dbc96a40d4eb.png">
+![image](https://user-images.githubusercontent.com/57219862/80564609-e20d0980-8a0b-11ea-9779-dbc96a40d4eb.png)
     
 * In AppDelegate file add
-
+```
 	var paySDK = PaySDKClass.shared
 
 	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool{
         	paySDK.processOrder(url: url)
        	 	return true;
 	}
-
+```
 
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
