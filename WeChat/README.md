@@ -9,8 +9,8 @@ Merchant must provide application bundle id and universal link of app (optional)
 ```
 <key>LSApplicationQueriesSchemes</key>
 <array>
-		<string>weixinULAPI</string>
-	</array>
+	<string>weixinULAPI</string>
+</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -25,30 +25,31 @@ Merchant must provide application bundle id and universal link of app (optional)
 		</dict>
 	</array>
 ```
-    <img width="417" alt="image" src="https://user-images.githubusercontent.com/57219862/80564609-e20d0980-8a0b-11ea-9779-dbc96a40d4eb.png">
+![image] <img width="417" alt="image" src="https://user-images.githubusercontent.com/57219862/80564609-e20d0980-8a0b-11ea-9779-dbc96a40d4eb.png">
     
 * In AppDelegate file add
 
-var paySDK = PaySDKClass.shared
+	var paySDK = PaySDKClass.shared
 
-func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        			paySDK.processOrder(url: url)
-       		 	return true;
-}
+	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool{
+        	paySDK.processOrder(url: url)
+       	 	return true;
+	}
+
 
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
-						                    envType: EnvType.SANDBOX,
-												        amount: 0.1,
-						                    payGate: PayGate.PAYDOLLAR,
-						                    currCode: currencyCode.HKD,
-						                    payType: payType.NORMAL_PAYMENT,
-						                    orderRef: "2018102409220001",
-						                    payMethod: "WECHATAPP",
-						                    lang: Language.ENGLISH,
-						                    merchantId: "1",
-						                    remark: "test",
-				                        extraData : ["weChatUniversalLink":"https://<domain-name>.com"])
+				envType: EnvType.SANDBOX,
+				amount: 0.1,
+				payGate: PayGate.PAYDOLLAR,
+				currCode: currencyCode.HKD,
+				payType: payType.NORMAL_PAYMENT,
+				orderRef: "2018102409220001",
+				payMethod: "WECHATAPP",
+				lang: Language.ENGLISH,
+				merchantId: "1",
+				remark: "test",
+				extraData : ["weChatUniversalLink":"https://<domain-name>.com"])
                                 
 paySDK.process()
 
