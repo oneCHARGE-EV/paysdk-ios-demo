@@ -36,6 +36,7 @@ Merchant must provide application bundle id and universal link of app (optional)
        	 	return true;
 	}
 ```
+* Initialize PayData
 
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
