@@ -5,6 +5,8 @@
 
 * Add URL Type in info .plist file 
 
+![image](https://user-images.githubusercontent.com/57220911/79874665-475a6c80-8406-11ea-9023-91ea84b50dac.png)
+
 * In AppDelegate file add
 
 var paySDK = PaySDKClass.shared
@@ -14,9 +16,6 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 			paySDK.processOrder(url: url)
 			returntrue
 }
-
-![image](https://user-images.githubusercontent.com/57220911/79874665-475a6c80-8406-11ea-9023-91ea84b50dac.png)
-
 
 
 ```
