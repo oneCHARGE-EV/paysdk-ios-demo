@@ -33,7 +33,7 @@ add the “AP_PaySDK” framework
 
   pod ‘AP_PaySDK’
   
-  ![image](https://user-images.githubusercontent.com/57219862/81049517-fce3f000-8edb-11ea-9160-23eacc279c81.png)
+  ![image](https://user-images.githubusercontent.com/57219862/81049934-cb1f5900-8edc-11ea-9c95-9dfa2bb3833a.png)
 
 * Import sdk into the class
 
