@@ -138,12 +138,15 @@ e.g
 ### Initialize PaySdk
 
 * Add implementation of PaySDK protocol –
+
 class ViewController: UIViewController , PaySDKDelegate
 
 * Instantiate PaySDK class with context.
- var paySDK=PaySDKClass.shared
+
+ var paySDK = PaySDK.shared
 
 * Set paySDK delegate
+
 paySDK.delegate = self
 
 
