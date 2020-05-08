@@ -34,8 +34,10 @@ pod 'Material'
  
 * Or use CocoaPods. CocoaPods is a dependency manager for Cocoa projects. For usage and installation instructions, visit https://guides.cocoapods.org/using/using-cocoapods.html for more detail. To integrate PaySDK into your Xcode project using CocoaPods, specify it in your Podfile:
 
+  ```
   pod ‘AP_PaySDK’
-  
+  ```
+ 
   ![image](https://user-images.githubusercontent.com/57219862/81049934-cb1f5900-8edc-11ea-9c95-9dfa2bb3833a.png)
 
 * Import sdk into the class
