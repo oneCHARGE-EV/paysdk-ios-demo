@@ -26,8 +26,11 @@ iOS Version: 11.0 and above
 
 * Download the latest sdk from https://github.com/asiapay-lib/paysdk-ios-lib
 
-* AddPaySDK.framework file into your project by adding the dependencies in Build Phases / Link Binary With Libraries :
-add the “AP_PaySDK” framework 
+* Add `AP_PaySDK.framework` file into your project by adding the dependencies in Build Phases / Link Binary With Libraries and also add `Material.framework` file into your project by adding the dependencies in Build Phases / Link Binary With Libraries or add using  cocoapods as 
+
+```
+pod 'Material'
+```
  
 * Or use CocoaPods. CocoaPods is a dependency manager for Cocoa projects. For usage and installation instructions, visit https://guides.cocoapods.org/using/using-cocoapods.html for more detail. To integrate PaySDK into your Xcode project using CocoaPods, specify it in your Podfile:
 
@@ -164,8 +167,7 @@ Member Pay | [Member Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/ma
 Installment Pay | [Installmet Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/InstallmentPay/README.md)
 Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/SchedulePay/README.md)
 Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PromoPay/README.md)
-
-
+WeChat Pay | [WeChat Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/WeChat/README.md)
 
 
 
