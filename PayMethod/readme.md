@@ -15,7 +15,7 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 payRef: "",
                                 extraData :[])
                                 
-paySDK.query(action: "TX_QUERY")
+paySDK.query(action: "PAYMENT_METHOD")
 
 //NOTE : For allowed Pay Method Response will come in below format 
 
