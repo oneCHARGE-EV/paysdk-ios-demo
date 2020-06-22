@@ -184,7 +184,7 @@ WeChat Pay | [WeChat Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/ma
 ```
 
 # Related Sample
-###[DeepLink Demo](#https://github.com/asiapay-lib/ios-deeplink-demo)
+[DeepLink Demo](#https://github.com/asiapay-lib/ios-deeplink-demo)
 
 ### Support
 Asiapay is a tech company. All our engineers handle support too. You can write to us at it@pesopay.com ,it@paydollar.com , it@siampy.com and expect a response from the devs from the iOS SDK.
