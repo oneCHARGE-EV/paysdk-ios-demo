@@ -2,21 +2,21 @@
 
 ## Initialization Step: 
 
- 1.	Add framework to the App
+ 1. Add framework to the App
   	`PassKit.framework`
 
- 2.	In Xcode , Under “Capabilities”, turn on Apple Pay, and ensure that you have selected the correct merchant ID
+ 2. In Xcode , Under “Capabilities”, turn on Apple Pay, and ensure that you have selected the correct merchant ID
     (If you don’t see yours, try tapping the + and enter the name of your merchant ID).
     
-    <img width="451" alt="ApplePay1" src="https://user-images.githubusercontent.com/57219862/86729280-eb89a200-c04a-11ea-9209-da610e993b85.png">
+    <img width="451" alt="ApplePay1" src="https://user-images.githubusercontent.com/57219862/86749288-c00eb380-c05a-11ea-83f2-55e7f011547a.png">
 
-3.	Add merchant ID in app entitlements file
+3. Add merchant ID in app entitlements file
 
     <img width="451" alt="ApplePay2" src="https://user-images.githubusercontent.com/57219862/86733970-41604900-c04f-11ea-9f8f-99887444e894.png">
 
 
 ## Set the Apple Pay button:
-    Set the button type and button style for the button as
+   Set the button type and button style for the button as
     ```
     btnApplePay.setApplePayButton(btnType: ApplePayButtonType.Buy, btnStyle: ApplePayButtonStyle.Black, view : self.view)
     ```
