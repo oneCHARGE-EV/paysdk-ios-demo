@@ -1,0 +1,47 @@
+# Apple Pay
+
+## Initialization Step: 
+
+ 1.	Add framework to the App
+  	`PassKit.framework`
+
+ 2.	In Xcode , Under “Capabilities”, turn on Apple Pay, and ensure that you have selected the correct merchant ID
+    (If you don’t see yours, try tapping the + and enter the name of your merchant ID).
+
+<img width="451" alt="ApplePay1" src="https://user-images.githubusercontent.com/57219862/86729280-eb89a200-c04a-11ea-9209-da610e993b85.png">
+
+3.	Add merchant ID in app entitlements file
+
+<img width="451" alt="ApplePay2" "https://user-images.githubusercontent.com/57219862/86728800-6a320f80-c04a-11ea-8f0f-c31e3a7f3e4f.png">
+
+
+## Set the Apple Pay button:
+    Set the button type and button style for the button as
+    ```
+    btnApplePay.setApplePayButton(btnType: ApplePayButtonType.Buy, btnStyle: ApplePayButtonStyle.Black, view : self.view)
+    ```
+
+```
+paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
+				                        envType: EnvType.SANDBOX,
+				                        amount: "10",
+				                        payGate: PayGate.PAYDOLLAR,
+				                        currCode:currencyCode.HKD,
+				                        payType: payType.NORMAL_PAYMENT,
+				                        orderRef: "560200353Ref",
+				                        payMethod: "ALIPAYHKAPP",
+				                        lang: Language.ENGLISH, 
+				                        merchantId: "560200353",
+				                        remark: "test",
+				                        extraData : ["apple_countryCode" : "US",
+                                             "apple_currencyCode" : "USD",
+                                             "apple_billingContactEmail" : "abc@gmail.com",
+                                             "apple_billingContactPhone" : "1234567890",
+                                             "apple_billingContactGivenName" : "ABC",
+                                             "apple_billingContactFamilyName" : "XYZ",
+                                             "apple_requiredBillingAddressFields" : ""])
+                                             
+
+paySDK.process();
+```
+
