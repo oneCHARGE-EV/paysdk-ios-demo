@@ -7,12 +7,12 @@
 
  2.	In Xcode , Under “Capabilities”, turn on Apple Pay, and ensure that you have selected the correct merchant ID
     (If you don’t see yours, try tapping the + and enter the name of your merchant ID).
-
-![image](https://user-images.githubusercontent.com/57219862/86729280-eb89a200-c04a-11ea-9209-da610e993b85.png)
+    
+    <img width="451" alt="ApplePay1" src="https://user-images.githubusercontent.com/57219862/86729280-eb89a200-c04a-11ea-9209-da610e993b85.png">
 
 3.	Add merchant ID in app entitlements file
 
-![images](https://user-images.githubusercontent.com/57219862/86728800-6a320f80-c04a-11ea-8f0f-c31e3a7f3e4f.png)
+    <img width="451" alt="ApplePay2" src="https://user-images.githubusercontent.com/57219862/86733970-41604900-c04f-11ea-9f8f-99887444e894.png">
 
 
 ## Set the Apple Pay button:
