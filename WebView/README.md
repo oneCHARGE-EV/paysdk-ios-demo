@@ -14,9 +14,7 @@ paySDK.paymentDetails = PayData(channelType : PayChannel.WEBVIEW,
                                 lang : Language.ENGLISH,
                                 merchantId : "88144121",
                                 remark : "",
-                                secureMethod: SecureMethod.NONE,
-                                secureHashSecret: "",
-                                addNewMember: false,
+                                payRef: "",
                                 extraData:[])
 
                 
