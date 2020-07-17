@@ -18,9 +18,7 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 lang: Language.ENGLISH,
                                 merchantId: "88146271",
                                 remark: "",
-                                secureMethod: SecureMethod.NONE,
-                                secureHashSecret: "",
-                                
+                                                                
                                 extraData: ["installment_service " : "T",
                                             "installment_period": 3,
                                             "installOnly": "T"])
