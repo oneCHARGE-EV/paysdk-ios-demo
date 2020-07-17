@@ -21,10 +21,7 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 lang: Language.ENGLISH,
                                 merchantId: "88146271",
                                 remark: "",
-                                secureMethod: SecureMethod.NONE,
-                                secureHashSecret: "",
-                                addNewMember: false,
-
+                                
                                 extraData :  extraData: ["promotion ": "T",
                                                          "promotionCode ": "TEST1",
                                                          "promotionRuleCode " : " TESTR25",
