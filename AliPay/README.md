@@ -27,7 +27,9 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
 				currCode:currencyCode.HKD,
 				payType: payType.NORMAL_PAYMENT,
 				orderRef: "560200353Ref",
-				payMethod: "ALIPAYHKAPP",
+				payMethod: "ALIPAYHKAPP", // FOR ALIPAY HK
+                                //payMethod: "ALIPAYCNAPP" // FOR ALIPAY CN
+                                //payMethod: "ALIPAYAPP" // FOR ALIPAY GLOBAL
 				lang: Language.ENGLISH, 
 				merchantId: "560200353",
 				remark: "test",
