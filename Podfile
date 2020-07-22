@@ -5,7 +5,7 @@ target 'DemoApp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'Eureka'
-  pod 'AP_PaySDK', '2.0.1'
+  pod 'AP_PaySDK', '2.1.3'
   pod 'NVActivityIndicatorView'
   pod 'Material'
 
@@ -16,10 +16,9 @@ target 'DemoApp-Objc' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'Eureka'
-  pod 'AP_PaySDK', '2.0.1'
+  pod 'AP_PaySDK', '2.1.3'
   pod 'NVActivityIndicatorView'
-  pod 'Material''
-
+  pod 'Material'
 
 
 end

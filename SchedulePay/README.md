@@ -20,9 +20,6 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 lang: Language.ENGLISH,
                                 merchantId: "88146271",
                                 remark: "",
-                                secureMethod: SecureMethod.NONE,
-                                secureHashSecret: "",
-                                addNewMember: false,
 
                                 extraData: ["appId" : "SP",
                                             "appRef" : "2018102409220001",
@@ -40,7 +37,6 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
 
 
 paySDK.process()
-
 
 ```
 

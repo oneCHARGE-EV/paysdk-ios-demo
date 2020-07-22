@@ -1,14 +1,6 @@
-
-
-# Direct Payment
+# Pay Method
 
 ```
-paySDK.cardDetails = CardDetails(cardHolderName: “first card”,
-                                 cardNo: "4012000000020086”,
-                                 expMonth: “07”,
-                                 expYear: “2030”,
-                                 securityCode: “123”)
-
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 envType: EnvType.SANDBOX,
                                 amount :“1”,
@@ -22,8 +14,13 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 remark: "",
                                 payRef: "",
                                 extraData :[])
+                                
+paySDK.query(action: "PAYMENT_METHOD")
 
-paySDK.process()
+//NOTE : For allowed Pay Method Response will come in below format 
+
+func payMethodOptions(method: PaymentOptionsDetail) {
+        //process the method       
+}
 
 ```
-<img width="254" alt="image" src="https://user-images.githubusercontent.com/57219862/80223077-6d317c80-8665-11ea-96c4-61e46dca606a.png">

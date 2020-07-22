@@ -292,7 +292,7 @@ class ViewController: FormViewController {
            print("All Groups request completed.....")
 
         }
-        print("1: ",form1?.allSections[0][1].title as? String)
+        /*print("1: ",form1?.allSections[0][1].title as? String)
         print("2: ",form1?.allSections[0][2].title as? String)
         print("3: ",form1?.allSections[0][3].title as? String)
         print("4: ",form1?.allSections[0][4].title as? String)
@@ -316,7 +316,7 @@ class ViewController: FormViewController {
         print("22: ",form1?.allSections[0][22].title as? String)
         print("23: ",form1?.allSections[0][23].title as? String)
         print("24: ",form1?.allSections[0][24].title as? String)
-        print("25: ",form1?.allSections[0][25].title as? String)
+        print("25: ",form1?.allSections[0][25].title as? String)*/
     }
     
     
@@ -356,6 +356,7 @@ class ViewController: FormViewController {
                                         lang: Language.ENGLISH,
                                         merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "",
+                                        payRef: "",
                                         extraData :  extraData)
         if form1?.allSections[0][3].baseValue != nil {
             paySDK.paymentDetails.cardDetails = CardDetails(cardHolderName: (form1?.allSections[0][4].baseValue as? String) ?? "",
@@ -389,6 +390,7 @@ class ViewController: FormViewController {
                                         lang: Language.ENGLISH,
                                         merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "",
+                                        payRef: "",
                                         extraData :  extraData)
         paySDK.process()
     }
@@ -420,6 +422,7 @@ class ViewController: FormViewController {
                                         lang: Language.ENGLISH,
                                         merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "",
+                                        payRef: "",
                                         extraData :  extraData)
         paySDK.process()
     }
@@ -439,6 +442,7 @@ class ViewController: FormViewController {
                                         lang: Language.ENGLISH,
                                         merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "",
+                                        payRef: "",
                                         extraData :  extraData)
         paySDK.process()
     }
@@ -457,6 +461,7 @@ class ViewController: FormViewController {
                                         lang: Language.ENGLISH,
                                         merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "",
+                                        payRef: "",
                                         extraData :  extraData)
         if form1?.allSections[0][3].baseValue != nil {
             paySDK.paymentDetails.cardDetails = CardDetails(cardHolderName: (form1?.allSections[0][4].baseValue as? String) ?? "",
@@ -641,6 +646,14 @@ class ViewController: FormViewController {
 
 
 extension ViewController : PaySDKDelegate {
+    func transQueryResults(result: TransQueryResults) {
+        print(result)
+    }
+    
+    func payMethodOptions(method: PaymentOptionsDetail) {
+        print(method)
+    }
+    
     
     func paymentResult(result: PayResult) {
         print(self.toJson(result: result))
@@ -678,17 +691,17 @@ extension ViewController : PaySDKDelegate {
 }
 
 
-class LoadingView: UIViewController ,NVActivityIndicatorViewable {
+class LoadingView: UIViewController {//,NVActivityIndicatorViewable {
     
     func startLoad() {
         let size = CGSize(width: self.view.frame.width/5, height: self.view.frame.width/5)
         let arr = [NVActivityIndicatorType.ballPulse, NVActivityIndicatorType.ballGridPulse, NVActivityIndicatorType.ballClipRotate, NVActivityIndicatorType.squareSpin, NVActivityIndicatorType.ballClipRotatePulse, NVActivityIndicatorType.ballClipRotateMultiple, NVActivityIndicatorType.ballPulseRise, NVActivityIndicatorType.ballRotate, NVActivityIndicatorType.cubeTransition, NVActivityIndicatorType.ballZigZag, NVActivityIndicatorType.ballZigZagDeflect, NVActivityIndicatorType.ballTrianglePath, NVActivityIndicatorType.ballScale, NVActivityIndicatorType.lineScale, NVActivityIndicatorType.lineScaleParty, NVActivityIndicatorType.ballScaleMultiple, NVActivityIndicatorType.ballPulseSync, NVActivityIndicatorType.ballBeat, NVActivityIndicatorType.ballDoubleBounce, NVActivityIndicatorType.lineScalePulseOut, NVActivityIndicatorType.lineScalePulseOutRapid, NVActivityIndicatorType.ballScaleRipple, NVActivityIndicatorType.ballScaleRippleMultiple, NVActivityIndicatorType.ballSpinFadeLoader, NVActivityIndicatorType.lineSpinFadeLoader, NVActivityIndicatorType.triangleSkewSpin, NVActivityIndicatorType.pacman, NVActivityIndicatorType.semiCircleSpin, NVActivityIndicatorType.ballRotateChase, NVActivityIndicatorType.orbit, NVActivityIndicatorType.audioEqualizer, NVActivityIndicatorType.circleStrokeSpin]
-        startAnimating(size, message: "",messageFont: nil,type: arr.randomElement())
+        //startAnimating(size, message: "",messageFont: nil,type: arr.randomElement())
     }
     
     
     func stopLoad() {
-        stopAnimating()
+        //stopAnimating()
     }
 }
 

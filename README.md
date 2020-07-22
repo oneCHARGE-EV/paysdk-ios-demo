@@ -30,12 +30,14 @@ iOS Version: 11.0 and above
 
   ```
     pod 'Material'
+    
   ```
  
 * Or use CocoaPods. CocoaPods is a dependency manager for Cocoa projects. For usage and installation instructions, visit https://guides.cocoapods.org/using/using-cocoapods.html for more detail. To integrate PaySDK into your Xcode project using CocoaPods, specify it in your Podfile:
 
   ```
-    pod ‘AP_PaySDK’
+    pod 'AP_PaySDK', '2.1.3'
+    
   ```
  
   ![image](https://user-images.githubusercontent.com/57219862/81049934-cb1f5900-8edc-11ea-9c95-9dfa2bb3833a.png)
@@ -119,6 +121,7 @@ iOS Version: 11.0 and above
 </dict>
 </dict>
 </dict>
+
 ```
 Also Merchant can disable ATS by 
 
@@ -170,6 +173,7 @@ Installment Pay | [Installmet Pay](https://github.com/asiapay-lib/paysdk-ios-dem
 Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/SchedulePay/README.md)
 Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PromoPay/README.md)
 WeChat Pay | [WeChat Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/WeChat/README.md)
+Apple Pay | [Apple Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/ApplePay/README.md)
 
 
 
@@ -182,6 +186,10 @@ WeChat Pay | [WeChat Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/ma
     }
     
 ```
+
+# Related Sample
+[DeepLink Demo](https://github.com/asiapay-lib/ios-deeplink-demo)
+
 
 ### Support
 Asiapay is a tech company. All our engineers handle support too. You can write to us at it@pesopay.com ,it@paydollar.com , it@siampy.com and expect a response from the devs from the iOS SDK.

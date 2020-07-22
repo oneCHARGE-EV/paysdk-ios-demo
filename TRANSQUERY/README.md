@@ -1,14 +1,6 @@
-
-
-# Direct Payment
+# Transaction Query
 
 ```
-paySDK.cardDetails = CardDetails(cardHolderName: “first card”,
-                                 cardNo: "4012000000020086”,
-                                 expMonth: “07”,
-                                 expYear: “2030”,
-                                 securityCode: “123”)
-
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 envType: EnvType.SANDBOX,
                                 amount :“1”,
@@ -23,7 +15,10 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 payRef: "",
                                 extraData :[])
 
-paySDK.process()
+paySDK.query(action:"TX_QUERY")
 
-```
-<img width="254" alt="image" src="https://user-images.githubusercontent.com/57219862/80223077-6d317c80-8665-11ea-96c4-61e46dca606a.png">
+ //NOTE : For Trans Query Response will come in below format 
+ func transQueryResults(result: TransQueryResults) {
+       //PROCESS RESPONSE
+ }
+ ```

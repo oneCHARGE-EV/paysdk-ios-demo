@@ -24,6 +24,7 @@ Merchant must provide application bundle id and universal link of app (optional)
 			</array>
 		</dict>
 	</array>
+    
 ```
 ![image](https://user-images.githubusercontent.com/57219862/80564609-e20d0980-8a0b-11ea-9779-dbc96a40d4eb.png)
     
@@ -35,6 +36,7 @@ Merchant must provide application bundle id and universal link of app (optional)
         	paySDK.processOrder(url: url)
        	 	return true;
 	}
+    
 ```
 * Initialize PayData
 
