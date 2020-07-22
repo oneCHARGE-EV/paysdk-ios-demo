@@ -22,5 +22,8 @@ paySDK.query(action: "PAYMENT_METHOD")
 func payMethodOptions(method: PaymentOptionsDetail) {
         //process the method       
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc5444bbca0ed88341e3766f01d529dac8946969
 ```
