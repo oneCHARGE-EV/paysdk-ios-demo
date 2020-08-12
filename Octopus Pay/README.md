@@ -24,7 +24,7 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
 				payMethod: "OCTOPUS",
 				lang: Language.ENGLISH,
 				merchantId: "1",
-        resultpage: "F",
+        			resultpage: "F",
 				extraData : [:])
                                 
 paySDK.process()
