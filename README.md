@@ -174,6 +174,7 @@ Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blo
 Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PromoPay/README.md)
 WeChat Pay | [WeChat Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/WeChat/README.md)
 Apple Pay | [Apple Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/ApplePay/README.md)
+Octopus Pay | [Octopus Pay]()
 
 
 
