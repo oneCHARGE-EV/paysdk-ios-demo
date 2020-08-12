@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  DemoApp
+//  ProSwift
 //
 //  Created by Vaibhav on 11/12/19.
 //  Copyright © 2019 Vaibhav. All rights reserved.
@@ -24,9 +24,12 @@ class ViewController: FormViewController {
     let loadview = LoadingView()
     var VASData : [String : Any]?
     var threeDSParams : ThreeDSParams?
+    var payref: String = ""
+    var resultPage: String = "F"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("SDK Version: \(paySDK.getSDKVersion())")
         let customization = UiCustomization()
         
         let submitButtonCustomization = ButtonCustomization("Courier", "#FF0000", 15, "#d3d3d3", 4)
@@ -282,17 +285,36 @@ class ViewController: FormViewController {
                 self.processWechat(sender: "ALIPAYAPP")
             })
             <<< ButtonRow() { (row: ButtonRow) in
+                row.title = "OCTOPUS"
+            }.onCellSelection({ (str, row) in
+                self.processWechat(sender: "OCTOPUS")
+            })
+            <<< ButtonRow() { (row: ButtonRow) in
                 row.title = "EASYPAYMENTFORM"
             }.onCellSelection({ (str, row) in
                 self.eASYPAYMENTFORM()
             })
-        
+            <<< ButtonRow() { (row: ButtonRow) in
+                row.title = "TRANS QUERY"
+            }.onCellSelection({ (str, row) in
+                self.VASService = row.title!
+                let addVC = VASController()
+                addVC.VAS = self.VASService
+                addVC.viewController1 = self
+                self.navigationController?.pushViewController(addVC, animated: true)
+                //self.transQuery()
+            })
+            <<< ButtonRow() { (row: ButtonRow) in
+                row.title = "PAYMENT OPTIONS"
+            }.onCellSelection({ (str, row) in
+                self.paymentOptions()
+            })
         serialGroup.notify(queue: DispatchQueue.main) {
 
            print("All Groups request completed.....")
 
         }
-        /*print("1: ",form1?.allSections[0][1].title as? String)
+        print("1: ",form1?.allSections[0][1].title as? String)
         print("2: ",form1?.allSections[0][2].title as? String)
         print("3: ",form1?.allSections[0][3].title as? String)
         print("4: ",form1?.allSections[0][4].title as? String)
@@ -316,7 +338,7 @@ class ViewController: FormViewController {
         print("22: ",form1?.allSections[0][22].title as? String)
         print("23: ",form1?.allSections[0][23].title as? String)
         print("24: ",form1?.allSections[0][24].title as? String)
-        print("25: ",form1?.allSections[0][25].title as? String)*/
+        print("25: ",form1?.allSections[0][25].title as? String)
     }
     
     
@@ -342,6 +364,41 @@ class ViewController: FormViewController {
         return jsonStr
     }
     
+    func toQueryJson(result: TransQueryResults) -> String {
+        if result.detail != nil {
+        let dic = [
+            "amount":result.detail?[0].amt,
+            "successCode":result.detail?[0].successcode,
+            "ipCountry":result.detail![0].ipCountry,
+            "authId":result.detail![0].authId,
+            "cardIssuingCountry":result.detail![0].cardIssuingCountry,
+            "currencyCode":result.detail![0].cur,
+            "errMsg":result.detail![0].errMsg,
+            "ord":result.detail![0].ord,
+            "payRef":result.detail![0].payRef,
+            "prc":result.detail![0].prc,
+            "ref":result.detail![0].ref,
+            "src":result.detail![0].src,
+            "transactionTime":result.detail![0].txTime,
+            "descriptionStr":result.detail![0].description
+        ]
+        let jsonData = try! JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+        let jsonStr = String(data: jsonData, encoding: String.Encoding.utf8)!
+            return jsonStr
+        }
+        return ""
+    }
+    
+    func toPayMethodJson(result: PaymentOptionsDetail) -> String {
+        let dic = [
+            "card":result.methods.card[0],
+            "netbanking":result.methods.netbanking[0],
+            "other": result.methods.other[0]
+        ]
+        let jsonData = try! JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+        let jsonStr = String(data: jsonData, encoding: String.Encoding.utf8)!
+        return jsonStr
+    }
     
     @IBAction func processDirect(_ sender: Any?) {
         let extraData = getValues()
@@ -357,6 +414,7 @@ class ViewController: FormViewController {
                                         merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "",
                                         payRef: "",
+                                        resultpage: resultPage,
                                         extraData :  extraData)
         if form1?.allSections[0][3].baseValue != nil {
             paySDK.paymentDetails.cardDetails = CardDetails(cardHolderName: (form1?.allSections[0][4].baseValue as? String) ?? "",
@@ -391,12 +449,13 @@ class ViewController: FormViewController {
                                         merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "",
                                         payRef: "",
+                                        resultpage: resultPage,
                                         extraData :  extraData)
         paySDK.process()
     }
     
     
-    @IBAction func processWechat(sender: String) {
+    @IBAction func  processWechat(sender: String) {
         var extraData = getValues()
         if sender == "APPLEPAY" {
             extraData = ["apple_countryCode" : "US",
@@ -406,10 +465,15 @@ class ViewController: FormViewController {
                          "apple_billingContactGivenName" : "ABC",
                          "apple_billingContactFamilyName" : "XYZ",
                          "apple_requiredBillingAddressFields" : ""]
-        } else {
+        } else if sender == "WECHAT" {
             extraData = [
                 "wechatUniversalLink": "https://paydollarmobileapp/"
             ]
+        } else if sender == "OCTOPUS" {
+            extraData = ["eVoucher": "T",
+                         "eVClassCode": "0001"]
+        } else {
+            extraData = [:]
         }
         paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                         envType: EnvType.SANDBOX,
@@ -423,6 +487,7 @@ class ViewController: FormViewController {
                                         merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "",
                                         payRef: "",
+                                        resultpage: resultPage,
                                         extraData :  extraData)
         paySDK.process()
     }
@@ -443,8 +508,47 @@ class ViewController: FormViewController {
                                         merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "",
                                         payRef: "",
+                                        resultpage: resultPage,
                                         extraData :  extraData)
         paySDK.process()
+    }
+    
+   func transQuery() {
+        let extraData = getValues()
+        paySDK.paymentDetails = PayData(channelType: PayChannel.NONE,
+                                        envType: EnvType.SANDBOX,
+                                        amount : (form1?.allSections[0][7].baseValue as? String) ?? "",
+                                        payGate: payGateForPG!,
+                                        currCode: currCode!,
+                                        payType: payType.NORMAL_PAYMENT,
+                                        orderRef: (form1?.allSections[0][2].baseValue as? String) ?? "",
+                                        payMethod: "ALL",
+                                        lang: Language.ENGLISH,
+                                        merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
+                                        remark: "",
+                                        payRef: self.payref,
+                                        resultpage: resultPage,
+                                        extraData :  extraData)
+    paySDK.query(action: Action.TX_QUERY.rawValue) //"TX_QUERY")
+    }
+    
+    func  paymentOptions() {
+        let extraData = getValues()
+        paySDK.paymentDetails = PayData(channelType: PayChannel.EASYPAYMENTFORM,
+                                        envType: EnvType.SANDBOX,
+                                        amount : (form1?.allSections[0][7].baseValue as? String) ?? "",
+                                        payGate: payGateForPG!,
+                                        currCode: currCode!,
+                                        payType: payType.NORMAL_PAYMENT,
+                                        orderRef: (form1?.allSections[0][2].baseValue as? String) ?? "",
+                                        payMethod: "ALL",
+                                        lang: Language.ENGLISH,
+                                        merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
+                                        remark: "",
+                                        payRef: "",
+                                        resultpage: resultPage,
+                                        extraData :  extraData)
+    paySDK.query(action: "PAYMENT_METHOD")
     }
     
     
@@ -462,6 +566,7 @@ class ViewController: FormViewController {
                                         merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "",
                                         payRef: "",
+                                        resultpage: resultPage,
                                         extraData :  extraData)
         if form1?.allSections[0][3].baseValue != nil {
             paySDK.paymentDetails.cardDetails = CardDetails(cardHolderName: (form1?.allSections[0][4].baseValue as? String) ?? "",
@@ -528,6 +633,10 @@ class ViewController: FormViewController {
         print("*********",extraData)
     }
     
+    func setPayRef(ref: String) {
+        self.payref = ref
+    }
+    
     func setThreeDSParams(params: ThreeDSParams?){
 //        threeDSParams = ThreeDSParams()
         threeDSParams = params
@@ -579,6 +688,8 @@ class ViewController: FormViewController {
         var extraData = [String: Any]()
         if self.VASService == "Installment Pay" || self.VASService == "Schedule Pay" || self.VASService == "Promo Pay" || self.VASService == "New Member Pay" || self.VASService == "Old Member Pay" {
             extraData = VASData!
+        } else if  self.VASService == "TRANS QUERY" {
+            //self.payref =
         }
 //            extraData["installment_service"] = "T"
 //            extraData["installment_period"] = (form1?.allSections[0][1].baseValue as? String) ?? ""
@@ -647,11 +758,17 @@ class ViewController: FormViewController {
 
 extension ViewController : PaySDKDelegate {
     func transQueryResults(result: TransQueryResults) {
-        print(result)
+        print(self.toQueryJson(result: result))
+        let aa = form1?.allSections[0][11] as! TextAreaRow
+        aa.value = self.toQueryJson(result: result)
+        aa.reload()
     }
     
     func payMethodOptions(method: PaymentOptionsDetail) {
-        print(method)
+        print(self.toPayMethodJson(result: method))
+        let aa = form1?.allSections[0][11] as! TextAreaRow
+        aa.value = self.toPayMethodJson(result: method)
+        aa.reload()
     }
     
     
@@ -691,17 +808,17 @@ extension ViewController : PaySDKDelegate {
 }
 
 
-class LoadingView: UIViewController {//,NVActivityIndicatorViewable {
+class LoadingView: UIViewController ,NVActivityIndicatorViewable {
     
     func startLoad() {
         let size = CGSize(width: self.view.frame.width/5, height: self.view.frame.width/5)
         let arr = [NVActivityIndicatorType.ballPulse, NVActivityIndicatorType.ballGridPulse, NVActivityIndicatorType.ballClipRotate, NVActivityIndicatorType.squareSpin, NVActivityIndicatorType.ballClipRotatePulse, NVActivityIndicatorType.ballClipRotateMultiple, NVActivityIndicatorType.ballPulseRise, NVActivityIndicatorType.ballRotate, NVActivityIndicatorType.cubeTransition, NVActivityIndicatorType.ballZigZag, NVActivityIndicatorType.ballZigZagDeflect, NVActivityIndicatorType.ballTrianglePath, NVActivityIndicatorType.ballScale, NVActivityIndicatorType.lineScale, NVActivityIndicatorType.lineScaleParty, NVActivityIndicatorType.ballScaleMultiple, NVActivityIndicatorType.ballPulseSync, NVActivityIndicatorType.ballBeat, NVActivityIndicatorType.ballDoubleBounce, NVActivityIndicatorType.lineScalePulseOut, NVActivityIndicatorType.lineScalePulseOutRapid, NVActivityIndicatorType.ballScaleRipple, NVActivityIndicatorType.ballScaleRippleMultiple, NVActivityIndicatorType.ballSpinFadeLoader, NVActivityIndicatorType.lineSpinFadeLoader, NVActivityIndicatorType.triangleSkewSpin, NVActivityIndicatorType.pacman, NVActivityIndicatorType.semiCircleSpin, NVActivityIndicatorType.ballRotateChase, NVActivityIndicatorType.orbit, NVActivityIndicatorType.audioEqualizer, NVActivityIndicatorType.circleStrokeSpin]
-        //startAnimating(size, message: "",messageFont: nil,type: arr.randomElement())
+        startAnimating(size, message: "",messageFont: nil,type: arr.randomElement())
     }
     
     
     func stopLoad() {
-        //stopAnimating()
+        stopAnimating()
     }
 }
 
