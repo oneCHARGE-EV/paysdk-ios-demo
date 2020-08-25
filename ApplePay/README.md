@@ -19,10 +19,7 @@
    Set the button type and button style for the button as
     ```
     btnApplePay.setApplePayButton(btnType: ApplePayButtonType.Buy, btnStyle: ApplePayButtonStyle.Black, view : self.view)
-<<<<<<< HEAD
-    
-=======
->>>>>>> fc5444bbca0ed88341e3766f01d529dac8946969
+
     ```
 
 
@@ -48,9 +45,5 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                              
 
 paySDK.process();
-<<<<<<< HEAD
-
-=======
->>>>>>> fc5444bbca0ed88341e3766f01d529dac8946969
 ```
 
