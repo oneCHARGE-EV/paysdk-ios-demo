@@ -18,9 +18,9 @@
 ### Set the Apple Pay button:
    Set the button type and button style for the button as
    
-    ```
+    
     btnApplePay.setApplePayButton(btnType: ApplePayButtonType.Buy, btnStyle: ApplePayButtonStyle.Black, view : self.view)
-    ```
+    
 
 
 ```
