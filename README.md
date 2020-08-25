@@ -166,16 +166,15 @@ Payment Services | Example
 --- | --- 
 Direct Payment | [Direct Payment](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/DirectPay/README.md)
 Webview Payment | [Webview Payment](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/WebView/README.md)
-Add 3DS  | [3DS](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/3DS/README.md)
-AliPay  | [AliPay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/AliPay/README.md)
+3Ds 2.0 Extra Paramters | [3DS](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/3DS/README.md)
+Alipay  | [AliPay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/AliPay/README.md)
+WeChat Pay | [WeChat Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/WeChat/README.md)
+Apple Pay | [Apple Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/ApplePay/README.md)
+Octopus | [Octopus Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/Octopus%20Pay/README.md)
 Member Pay | [Member Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/MemberPay/README.md)
 Installment Pay | [Installmet Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/InstallmentPay/README.md)
 Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/SchedulePay/README.md)
 Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PromoPay/README.md)
-WeChat Pay | [WeChat Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/WeChat/README.md)
-Apple Pay | [Apple Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/ApplePay/README.md)
-Octopus Pay | [Octopus Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/Octopus%20Pay/README.md)
-
 
 
 ### Collect Payment Result
