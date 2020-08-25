@@ -160,9 +160,9 @@ paySDK.delegate = self
 
 ### Initialize Payload
 
-* Use following payment options.
+* Use following payment services.
  
-Payment Option | Example
+Payment Services | Example
 --- | --- 
 Direct Payment | [Direct Payment](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/DirectPay/README.md)
 Webview Payment | [Webview Payment](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/WebView/README.md)
