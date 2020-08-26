@@ -176,7 +176,7 @@ Installment Pay | [Installmet Pay](https://github.com/asiapay-lib/paysdk-ios-dem
 Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/SchedulePay/README.md)
 Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PromoPay/README.md)
 Transaction Query | [Transaction Query](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/TRANSQUERY)
-PayMethods Query | [PayMethods Query](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PayMethod)
+Payment Methods Query | [Payment Methods Query](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PayMethod)
 EVoucher | [EVoucher](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/EVoucher)
 
 ### Collect Payment Result
