@@ -18,7 +18,7 @@ class ViewController: FormViewController {
     var memberPayToken = ""
     var payGateForPG : PayGate?
     var currCode : CurrencyCode?
-    var isUIRamdom : Bool = false
+    var isUIRamdom : Bool =     false
     var isLoaderRamdom : Bool = false
     var VASService : String = ""
     let loadview = LoadingView()
@@ -309,6 +309,16 @@ class ViewController: FormViewController {
             }.onCellSelection({ (str, row) in
                 self.paymentOptions()
             })
+            <<< ButtonRow() { (row: ButtonRow) in
+                row.title = "EVoucher"
+            }.onCellSelection({ (str, row) in
+                self.VASService = row.title!
+                let addVC = VASController()
+                addVC.VAS = self.VASService
+                addVC.viewController1 = self
+                self.navigationController?.pushViewController(addVC, animated: true)
+                //self.transQuery()
+            })
         serialGroup.notify(queue: DispatchQueue.main) {
 
            print("All Groups request completed.....")
@@ -529,7 +539,8 @@ class ViewController: FormViewController {
                                         payRef: self.payref,
                                         resultpage: resultPage,
                                         extraData :  extraData)
-    paySDK.query(action: Action.TX_QUERY.rawValue) //"TX_QUERY")
+    
+        paySDK.query(action: Action.TX_QUERY.rawValue) //"TX_QUERY")
     }
     
     func  paymentOptions() {
@@ -688,8 +699,11 @@ class ViewController: FormViewController {
         var extraData = [String: Any]()
         if self.VASService == "Installment Pay" || self.VASService == "Schedule Pay" || self.VASService == "Promo Pay" || self.VASService == "New Member Pay" || self.VASService == "Old Member Pay" {
             extraData = VASData!
-        } else if  self.VASService == "TRANS QUERY" {
-            //self.payref =
+        } else if self.VASService == "EVoucher" {
+            extraData = VASData!
+        }
+        else if  self.VASService == "TRANS QUERY" {
+            extraData = VASData!
         }
 //            extraData["installment_service"] = "T"
 //            extraData["installment_period"] = (form1?.allSections[0][1].baseValue as? String) ?? ""

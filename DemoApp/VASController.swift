@@ -1,6 +1,6 @@
 //
 //  VASController.swift
-//  DemoApp
+//  ProSwift
 //
 //  Created by Priyanka Gore on 22/04/20.
 //  Copyright © 2020 Vaibhav. All rights reserved.
@@ -31,16 +31,19 @@ class VASController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Payment Options"
+        // self.navigationController?.navigationItem.titleLabel.text = "Payment options"
         if(VAS == "Installment Pay") {
             form1 =  form +++ Section("VAS details")
                 <<< PhoneRow() {
                     $0.title = "installment_period"
                     $0.placeholder = "Any numbers here"
                     $0.add(rule: RuleRequired())
+                    //                    $0.validationOptions = .validatesOnChangeAfterBlurred
                     $0.validationOptions = .validatesOnChange
                 }.cellUpdate { cell, row in
                     if !row.isValid {
                         cell.titleLabel?.textColor = .systemRed
+                        //ValidationError(msg: "Field required!")
                     }
                 }
                 <<< PickerInputRow<String>("Picker Input Row1") {
@@ -63,6 +66,8 @@ class VASController: FormViewController {
                         extraData["installment_service"] = "T"
                         extraData["installment_period"] = (self.form1?.allSections[0][0].baseValue as? String) ?? ""
                         extraData["installOnly"] = (self.form1?.allSections[0][1].baseValue as? String) ?? ""
+                        
+                        //                    self.viewController1?.VASData = extraData
                         self.viewController1?.VASValue(extraData: extraData)
                         self.navigationController?.popViewController(animated: true)
                         if self.viewController1?.form1?.allSections[0][3].baseValue != nil {
@@ -74,6 +79,7 @@ class VASController: FormViewController {
                         self.onValidate()
                     }
                 })
+            //self.processDirect(nil)
         } else if(VAS == "Promo Pay") {
             form1 =  form +++ Section("VAS details")
                 <<< TextRow() { row in
@@ -81,31 +87,34 @@ class VASController: FormViewController {
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< TextRow() { row in
                     row.title = "promotionRuleCode"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< PhoneRow() {
                     $0.title = "promotionOriginalAmt"
                     $0.placeholder = "And numbers here"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< ButtonRow() { (row: ButtonRow) in
                     row.title = VAS //"Promo Pay"
                 }.onCellSelection({ (str, row) in
@@ -161,118 +170,129 @@ class VASController: FormViewController {
                     $0.value = "3"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< PhoneRow() {
                     $0.title = "Start day"
                     $0.placeholder = "Add numbers here"
                     $0.value = "20"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< PhoneRow() {
                     $0.title = "Start month"
                     $0.placeholder = "And numbers here"
                     $0.value = "07"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< PhoneRow() {
                     $0.title = "Start year"
                     $0.placeholder = "And numbers here"
                     $0.value = "2021"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< PhoneRow() {
                     $0.title = "End day"
                     $0.placeholder = "Add numbers here"
                     $0.value = "20"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< PhoneRow() {
                     $0.title = "End month"
                     $0.placeholder = "And numbers here"
                     $0.value = "07"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< PhoneRow() {
                     $0.title = "End year"
                     $0.placeholder = "And numbers here"
                     $0.value = "2030"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< TextRow() { row in
                     row.title = "Name"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< EmailRow() {row in
                     row.title = "Email Id"
                     row.placeholder = "Enter valid email id here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< TextRow() { row in
                     row.title = "Application Id"
                     row.placeholder = "Enter text here"
                     row.value = "SP"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                     }
-                }
                 <<< PhoneRow() {
                     $0.title = "Merchant Reference"
                     $0.placeholder = "Add numbers here"
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< ButtonRow() { (row: ButtonRow) in
                     row.title = VAS //"Schedule Pay"
@@ -302,19 +322,21 @@ class VASController: FormViewController {
                     } else {
                         self.onValidate()
                     }
+                    //self.processDirect(nil)
                 })
         } else if(VAS == "New Member Pay") {
             form1 =  form +++ Section("VAS details")
                 <<< TextRow() { row in
                     row.title = "memberPay_memberId"
+                    //row.value = "member03"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        ""
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< ButtonRow() { (row: ButtonRow) in
                     row.title = VAS//"New Member Pay"
@@ -334,6 +356,7 @@ class VASController: FormViewController {
                     } else {
                         self.onValidate()
                     }
+                    //self.processHosted(nil)
                 })
             
         } else if(VAS == "Old Member Pay") {
@@ -343,21 +366,22 @@ class VASController: FormViewController {
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "memberPayToken"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< ButtonRow() { (row: ButtonRow) in
                     row.title = VAS//"Old Member Pay"
@@ -378,7 +402,45 @@ class VASController: FormViewController {
                     } else {
                         self.onValidate()
                     }
+                    //self.processHosted(nil)
                 })
+        } else if(VAS == "TRANS QUERY") {
+            form1 =  form +++ Section("VAS details")
+                <<< TextRow() { row in
+                    row.title = "payRef"
+                    //row.value = "member03"
+                    row.placeholder = "Enter text here"
+                    row.add(rule: RuleRequired())
+                    row.validationOptions = .validatesOnChange
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
+                }
+                <<< ButtonRow() { (row: ButtonRow) in
+                    row.title = VAS
+                }.onCellSelection({ (str, row) in
+                    if self.form1!.validate().isEmpty {
+//                        AppDelegate().payref = (self.form1?.allSections[0][0].baseValue as? String) ?? ""
+//                        let
+                        self.viewController1?.payref = (self.form1?.allSections[0][0].baseValue as? String) ?? ""
+                        let extraData = [String: Any]()
+                        self.viewController1?.VASValue(extraData: extraData)
+//                        self.viewController1?.setPayRef(ref: payref)
+                        self.navigationController?.popViewController(animated: true)
+                        self.viewController1?.transQuery()
+//                        if self.viewController1?.form1?.allSections[0][3].baseValue != nil {
+//                            self.viewController1?.processDirect(nil)
+//                        } else {
+//                            self.viewController1?.processHosted(nil)
+//                        }
+                    } else {
+                        self.onValidate()
+                    }
+                    //self.processHosted(nil)
+                })
+            
         } else if(VAS == "THREEDS2") {
             form1 =  form +++ Section("VAS details")
                 <<< TextRow() { row in
@@ -386,10 +448,11 @@ class VASController: FormViewController {
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Mobile Phone Country Code"
@@ -397,10 +460,11 @@ class VASController: FormViewController {
                     $0.value = " "
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Mobile Phone Number"
@@ -408,10 +472,11 @@ class VASController: FormViewController {
                     $0.value = " "
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Home Phone Country Code"
@@ -419,10 +484,11 @@ class VASController: FormViewController {
                     $0.value = " "
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Home Phone Number"
@@ -430,10 +496,11 @@ class VASController: FormViewController {
                     $0.value = " "
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Work Phone Country Code"
@@ -441,11 +508,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Work Phone Number"
@@ -453,22 +520,22 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Delivery Email"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Billing Country Code"
@@ -476,77 +543,77 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Billing State"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Billing City"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Billing Line 1"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Billing Line 2"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Billing Line 3"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Billing Postal Code"
                     $0.placeholder = "Add numbers here"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Shipping Details"
@@ -554,11 +621,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Shipping Country Code"
@@ -566,64 +633,66 @@ class VASController: FormViewController {
                     $0.value = " "
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Shipping State"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Shipping City"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Shipping Line 1"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                        
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Shipping Line 2"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed   
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< TextRow() { row in
                     row.title = "Shipping Line 3"
                     row.placeholder = "Enter text here"
                     row.add(rule: RuleRequired())
                     row.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Create Date"
@@ -631,10 +700,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Age"
@@ -642,10 +712,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Last Date Changed"
@@ -653,10 +724,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Last Change Indication"
@@ -664,10 +736,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Password Date Change"
@@ -675,10 +748,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Password Date Changed Ind"
@@ -686,10 +760,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Purchase Count"
@@ -697,10 +772,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Card Provision Attempt"
@@ -708,70 +784,77 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Transation Day"
                     $0.placeholder = "Enter text here"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Transaction Year"
                     $0.placeholder = "Enter text here"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Payment Acct Date"
                     $0.placeholder = "Enter text here"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Payment Acct Ind"
                     $0.placeholder = "Enter text here"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Shipping Addr change Date"
                     $0.placeholder = "Enter text here"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Shipping Addr change Ind"
                     $0.placeholder = "Enter text here"
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PickerInputRow<String>("Picker Input Row1") {
                     $0.title = "Account name same as Shipping"
@@ -805,10 +888,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Account Auth TimeStamp"
@@ -816,10 +900,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Delivery Time"
@@ -827,10 +912,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "PreOrder Reason"
@@ -838,10 +924,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Auth Timestamp"
@@ -849,10 +936,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PhoneRow() {
                     $0.title = "Gift Card Amount"
@@ -860,10 +948,11 @@ class VASController: FormViewController {
                     $0.value = ""
                     $0.add(rule: RuleRequired())
                     $0.validationOptions = .validatesOnChange
-                }.cellUpdate { cell, row in
-                    if !row.isValid {
-                        cell.titleLabel?.textColor = .systemRed
-                    }
+                    }.cellUpdate { cell, row in
+                        if !row.isValid {
+                            cell.titleLabel?.textColor = .systemRed
+                            //ValidationError(msg: "Field required!")
+                        }
                 }
                 <<< PickerInputRow<String>("Picker Input Row3") {
                     $0.title = "Currency"
@@ -958,6 +1047,7 @@ class VASController: FormViewController {
                         threeDSParams.threeDSGiftCardCount = (self.form1?.allSections[0][45].baseValue as? String) ?? ""
                         threeDSParams.threeDSSdkMaxTimeout = "05"
                         threeDSParams.threeDSSdkInterface =  "03"
+                        //self.viewController1?.setThreeDSParams(params: threeDSParams)
                         self.viewController1?.setThreeDSParams(params: threeDSParams)
                         self.navigationController?.popViewController(animated: true)
                         if self.viewController1?.form1?.allSections[0][3].baseValue != nil {
@@ -969,7 +1059,42 @@ class VASController: FormViewController {
                         self.onValidate()
                     }
                 })
-        }
+        }  else if(VAS == "EVoucher") {
+                    form1 =  form +++ Section("VAS details")
+                        <<< TextRow() { row in
+                            row.title = "EVoucher Class Code"
+                            //row.value = "member03"
+                            row.placeholder = "Enter text here"
+                            row.add(rule: RuleRequired())
+                            row.validationOptions = .validatesOnChange
+                            }.cellUpdate { cell, row in
+                                if !row.isValid {
+                                    cell.titleLabel?.textColor = .systemRed
+                                    //ValidationError(msg: "Field required!")
+                                }
+                        }
+                        <<< ButtonRow() { (row: ButtonRow) in
+                            row.title = VAS//"Installment Pay"
+                        }.onCellSelection({ (str, row) in
+                            if self.form1!.validate().isEmpty {
+                                var extraData = [String: Any]()
+                                extraData["eVoucher"] = "T"
+                                extraData["eVClassCode"] = (self.form1?.allSections[0][0].baseValue as? String) ?? ""
+                                
+                                self.viewController1?.VASValue(extraData: extraData)
+                                self.navigationController?.popViewController(animated: true)
+//                                if self.viewController1?.form1?.allSections[0][3].baseValue != nil {
+//                                    self.viewController1?.processDirect(nil)
+//                                } else {
+                                    self.viewController1?.processHosted(nil)
+//                                }
+                            } else {
+                                self.onValidate()
+                            }
+                            //self.processHosted(nil)
+                        })
+                    
+                }
     }
     
     
@@ -985,6 +1110,15 @@ class VASController: FormViewController {
     }
 }
 
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 
