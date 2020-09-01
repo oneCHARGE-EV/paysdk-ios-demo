@@ -2,8 +2,8 @@
 //  ViewController.h
 //  DemoApp-Objc
 //
-//  Created by Vaibhav on 11/12/19.
-//  Copyright © 2019 Vaibhav. All rights reserved.
+//  Created by Asiapay on 11/12/19.
+//  Copyright © 2019 Asiapay. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

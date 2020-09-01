@@ -2,19 +2,16 @@
 //  ViewController.m
 //  DemoApp-Objc
 //
-//  Created by Vaibhav on 11/12/19.
-//  Copyright © 2019 Vaibhav. All rights reserved.
+//  Created by Asiapay on 11/12/19.
+//  Copyright © 2019 Asiapay. All rights reserved.
 //
 
 #import "ViewController.h"
 #import <AP_PaySDK/AP_PaySDK.h>
 #import <AP_PaySDK/AP_PaySDK-Swift.h>
 #import <Eureka/Eureka-umbrella.h>
-//#import <Eureka/Eureka.h>
 @import AP_PaySDK;
-//@import Eureka;
-//import AP_PaySDK
-//import Eureka
+
 
 
 @interface ViewController () <PaySDKDelegate> {
@@ -23,15 +20,8 @@
     PayGate *bb;
     CurrencyCode *bb1;
     BOOL isRamdom;
-    
+    UIActivityIndicatorView *activityView;
 }
-//var paySDK = PaySDK.shared
-//var form1 : Form?
-//var memberPayToken = ""
-//var bb : PayGate?
-//var bb1 : CurrencyCode?
-//var isRamdom : Bool = false
-
 @end
 
 @implementation ViewController
@@ -39,8 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     paySDK = [PaySDK shared];
+
     UiCustomization *customization = [[UiCustomization alloc] init];
-    
     
     ButtonCustomization *submitButtonCustomization = [[ButtonCustomization alloc] init:@"Courier" :@"#FF0000" :15 :@"#d3d3d3" :4];
     ButtonCustomization *resendButtonCustomization = [[ButtonCustomization alloc] init:@"Courier" :@"#FF0000" :15 :@"#d3d3d3" :4];
@@ -65,10 +55,34 @@
     [paySDK setUiCustomization:customization];
     paySDK.delegate = self;
     paySDK.isBioMetricRequired = YES;
-   // [paySDK setPublicKeyWithStr:@"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArvxLT052VCC+QgQzh3SHuwMtD6qW4FG0pC8BLumsqZPZ6vV3cRx3np44sSbA5lllXtbIzodvc9T2sYdLQDpFG3I7IdhxE4XG05xSOQCeht7uz+s8DMlYJJjzJV2hBNEdNtjFkA2JYoxoBzsjIBTj4kTwFSZBVZCfq6HvuOGpKjzqsHkQXlXya5xzIBLjYduc5RBnuyHIeeQiSsuI2leg+RmQsUt84ykmrpTEpoPID0/vBwtHIilpUCGz88vwgN5SHTRTqG5naGjLR59pebYauKPuKRx7GYqGMbaXi8JYN7UdsipW9qCXY1b27Lq9ESVpbIgp85nLY66ISsKcmpheIwIDAQAB"];
-    bb1 = CurrencyCodeRMB;
-    // Do any additional setup after loading the view.
+    
+    NSString *merchantID = @"";
+    
+    paySDK.paymentDetails = [[PayData alloc] initWithChannelType:PayChannelWEBVIEW envType:EnvTypeSANDBOX amount:@"1.0" payGate:PayGatePAYDOLLAR currCode:CurrencyCodeHKD payType:payTypeNORMAL_PAYMENT orderRef:@"12345678" payMethod:@"CC" lang:LanguageENGLISH merchantId: merchantID remark:@"" payRef:@"" resultpage:@"" extraData:nil];
+
+    [paySDK process];
 }
+
+-(void)paymentResultWithResult:(PayResult * _Nonnull)result {
+    NSLog(@"%@", result.errMsg);
+    NSLog(@"%@", result.successCode);
+    NSLog(@"%@", result.maskedCardNo);
+    NSLog(@"%@", result.ref);
+    NSLog(@"%@", result.transactionTime);
+    NSLog(@"%@", result.cardHolder);
+}
+
+- (void)showProgress {
+//    loadView.startLoad()
+}
+
+
+- (void)hideProgress {
+//    loadView.stopLoad()
+}
+
+
+
 
 
 @end

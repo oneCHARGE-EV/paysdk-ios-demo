@@ -3,7 +3,7 @@
 //  ProSwift
 //
 //  Created by Priyanka Gore on 22/04/20.
-//  Copyright © 2020 Vaibhav. All rights reserved.
+//  Copyright © 2020 Asiapay. All rights reserved.
 //
 
 import UIKit
