@@ -30,7 +30,7 @@
     [super viewDidLoad];
     paySDK = [PaySDK shared];
 
-    UiCustomization *customization = [[UiCustomization alloc] init];
+   UiCustomization *customization = [[UiCustomization alloc] init];
     
     ButtonCustomization *submitButtonCustomization = [[ButtonCustomization alloc] init:@"Courier" :@"#FF0000" :15 :@"#d3d3d3" :4];
     ButtonCustomization *resendButtonCustomization = [[ButtonCustomization alloc] init:@"Courier" :@"#FF0000" :15 :@"#d3d3d3" :4];
@@ -40,7 +40,7 @@
     
     LabelCustomization *labelCustomization = [[LabelCustomization alloc] init:@"Courier" :@"#FF0000" :14 :@"#FF0000":@"Courier" :20];
     TextBoxCustomization *textBoxCustomization = [[TextBoxCustomization alloc] init:@"Courier" :@"FF0000" :14 :4 :@"FF0000" :4];
-    ToolbarCustomization *toolbarCustomization = [[ToolbarCustomization alloc] init:@"Courier" :@"#FFFFFF" :20 :@"#000000" :@"Payment Page"];
+    //ToolbarCustomization *toolbarCustomization = [[ToolbarCustomization alloc] init:@"Courier" :@"#FFFFFF" :20 :@"#000000" :@"Payment Page"];
     NSError *err;
     [customization setLabelCustomization:labelCustomization error:&err];
     [customization setButtonCustomization:submitButtonCustomization : PaySDKButtonTypeSUBMIT error:&err];
@@ -51,7 +51,7 @@
     
     [customization setLabelCustomization:labelCustomization error:&err];
     [customization setTextBoxCustomization:textBoxCustomization error:&err];
-    [customization setToolbarCustomization:toolbarCustomization error:&err];
+    //[customization setToolbarCustomization:toolbarCustomization error:&err];
     [paySDK setUiCustomization:customization];
     paySDK.delegate = self;
     paySDK.isBioMetricRequired = YES;
