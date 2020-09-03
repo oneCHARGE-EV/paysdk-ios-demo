@@ -8,17 +8,16 @@ target 'DemoApp' do
   pod 'AP_PaySDK', '2.1.6'
   pod 'NVActivityIndicatorView'
   pod 'Material'
-
+  pod 'IQKeyboardManager'
 
 end
 
 target 'DemoApp-Objc' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Eureka'
   pod 'AP_PaySDK', '2.1.6'
   pod 'NVActivityIndicatorView'
   pod 'Material'
-
+  pod 'IQKeyboardManager'
 
 end
