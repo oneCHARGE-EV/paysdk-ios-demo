@@ -15,7 +15,8 @@ paySDK.paymentDetails = PayData(channelType : PayChannel.WEBVIEW,
                                 merchantId : "88144121",
                                 remark : "",
                                 payRef: "",
-                                extraData:[])
+                                resultPage:"F",
+                                extraData:[:])
 
                 
 paySDK.process();
