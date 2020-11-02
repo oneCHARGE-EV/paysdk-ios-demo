@@ -2,7 +2,11 @@
 
 ## Initialization Step: 
 
-* Add LSApplicationQueriesSchemes in info .plist file 
+* ## Initialization Step: 
+
+* Add URL Type as "hk.com.hkicl" in info .plist file 
+
+
 
 ```
 <key>LSApplicationQueriesSchemes</key>
@@ -21,7 +25,7 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
 				currCode: currencyCode.HKD,
 				payType: payType.NORMAL_PAYMENT,
 				orderRef: "2018102409220001",
-				payMethod: "OCTOPUS",
+				payMethod: "FPS",
 				lang: Language.ENGLISH,
 				merchantId: "1",
         			resultpage: "F",

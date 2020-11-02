@@ -28,14 +28,14 @@
 		4246A6160CE4AE02FD41658C /* Pods_DemoApp_Objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp_Objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAC12FD3C0FC4BAC1596694 /* Pods-DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.release.xcconfig"; path = "Target Support Files/Pods-DemoApp/Pods-DemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		69629D21DF1904DA713B24E1 /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8069D0852411046100C240DA /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8069D0852411046100C240DA /* FPSDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FPSDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8069D0882411046100C240DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8069D08C2411046100C240DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8069D08F2411046100C240DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8069D0912411046200C240DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8069D0942411046200C240DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8069D0962411046200C240DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		80C48731241106F2004536BA /* DemoApp-Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DemoApp-Objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80C48731241106F2004536BA /* FPSDemoApp-Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FPSDemoApp-Objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80C48733241106F2004536BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		80C48734241106F2004536BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		80C48739241106F2004536BA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 		8069D0862411046100C240DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8069D0852411046100C240DA /* DemoApp.app */,
-				80C48731241106F2004536BA /* DemoApp-Objc.app */,
+				8069D0852411046100C240DA /* FPSDemoApp.app */,
+				80C48731241106F2004536BA /* FPSDemoApp-Objc.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,9 +146,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8069D0842411046100C240DA /* DemoApp */ = {
+		8069D0842411046100C240DA /* FPSDemoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8069D0992411046200C240DA /* Build configuration list for PBXNativeTarget "DemoApp" */;
+			buildConfigurationList = 8069D0992411046200C240DA /* Build configuration list for PBXNativeTarget "FPSDemoApp" */;
 			buildPhases = (
 				3E8A37EBA6D9C5247A1F37EC /* [CP] Check Pods Manifest.lock */,
 				8069D0812411046100C240DA /* Sources */,
@@ -160,14 +160,14 @@
 			);
 			dependencies = (
 			);
-			name = DemoApp;
+			name = FPSDemoApp;
 			productName = DemoApp;
-			productReference = 8069D0852411046100C240DA /* DemoApp.app */;
+			productReference = 8069D0852411046100C240DA /* FPSDemoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		80C48730241106F2004536BA /* DemoApp-Objc */ = {
+		80C48730241106F2004536BA /* FPSDemoApp-Objc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80C48747241106F4004536BA /* Build configuration list for PBXNativeTarget "DemoApp-Objc" */;
+			buildConfigurationList = 80C48747241106F4004536BA /* Build configuration list for PBXNativeTarget "FPSDemoApp-Objc" */;
 			buildPhases = (
 				63253D1CA0EE6E37B932BDD7 /* [CP] Check Pods Manifest.lock */,
 				80C4872D241106F2004536BA /* Sources */,
@@ -179,9 +179,9 @@
 			);
 			dependencies = (
 			);
-			name = "DemoApp-Objc";
+			name = "FPSDemoApp-Objc";
 			productName = "DemoApp-Objc";
-			productReference = 80C48731241106F2004536BA /* DemoApp-Objc.app */;
+			productReference = 80C48731241106F2004536BA /* FPSDemoApp-Objc.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -202,7 +202,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8069D0802411046100C240DA /* Build configuration list for PBXProject "DemoApp" */;
+			buildConfigurationList = 8069D0802411046100C240DA /* Build configuration list for PBXProject "FPSDemoApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -215,8 +215,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8069D0842411046100C240DA /* DemoApp */,
-				80C48730241106F2004536BA /* DemoApp-Objc */,
+				8069D0842411046100C240DA /* FPSDemoApp */,
+				80C48730241106F2004536BA /* FPSDemoApp-Objc */,
 			);
 		};
 /* End PBXProject section */
@@ -574,7 +574,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8069D0802411046100C240DA /* Build configuration list for PBXProject "DemoApp" */ = {
+		8069D0802411046100C240DA /* Build configuration list for PBXProject "FPSDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8069D0972411046200C240DA /* Debug */,
@@ -583,7 +583,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8069D0992411046200C240DA /* Build configuration list for PBXNativeTarget "DemoApp" */ = {
+		8069D0992411046200C240DA /* Build configuration list for PBXNativeTarget "FPSDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8069D09A2411046200C240DA /* Debug */,
@@ -592,7 +592,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80C48747241106F4004536BA /* Build configuration list for PBXNativeTarget "DemoApp-Objc" */ = {
+		80C48747241106F4004536BA /* Build configuration list for PBXNativeTarget "FPSDemoApp-Objc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80C48748241106F4004536BA /* Debug */,
