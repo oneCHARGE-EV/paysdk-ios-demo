@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		181F2B4D247284CA00193F25 /* VASController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181F2B4C247284CA00193F25 /* VASController.swift */; };
 		8069D0892411046100C240DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069D0882411046100C240DA /* AppDelegate.swift */; };
 		8069D08D2411046100C240DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8069D08C2411046100C240DA /* ViewController.swift */; };
 		8069D0902411046100C240DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8069D08E2411046100C240DA /* Main.storyboard */; };
@@ -26,7 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		181F2B4C247284CA00193F25 /* VASController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VASController.swift; sourceTree = "<group>"; };
 		4246A6160CE4AE02FD41658C /* Pods_DemoApp_Objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp_Objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAC12FD3C0FC4BAC1596694 /* Pods-DemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp.release.xcconfig"; path = "Target Support Files/Pods-DemoApp/Pods-DemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		69629D21DF1904DA713B24E1 /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,7 +104,6 @@
 		8069D0872411046100C240DA /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				181F2B4C247284CA00193F25 /* VASController.swift */,
 				8069D0882411046100C240DA /* AppDelegate.swift */,
 				8069D08C2411046100C240DA /* ViewController.swift */,
 				80C4874C24110819004536BA /* paysdk.plist */,
@@ -337,7 +334,6 @@
 			files = (
 				8069D08D2411046100C240DA /* ViewController.swift in Sources */,
 				8069D0892411046100C240DA /* AppDelegate.swift in Sources */,
-				181F2B4D247284CA00193F25 /* VASController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
