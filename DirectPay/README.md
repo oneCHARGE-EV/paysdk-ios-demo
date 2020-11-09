@@ -4,11 +4,11 @@
 
 * Swift Code
 ```
-paySDK.cardDetails = CardDetails(cardHolderName: “first card”,
-                                 cardNo: "4012000000020086”,
-                                 expMonth: “07”,
-                                 expYear: “2030”,
-                                 securityCode: “123”)
+paySDK.paymentDetails.cardDetails = CardDetails(cardHolderName: “first card”,
+                                                cardNo: "4012000000020086”,
+                                                expMonth: “07”,
+                                                expYear: “2030”,
+                                                securityCode: “123”)
 
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 envType: EnvType.SANDBOX,
@@ -22,7 +22,8 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 merchantId: "88146271",
                                 remark: "",
                                 payRef: "",
-                                extraData :[])
+                                resultpage: "F",
+                                extraData :[:])
 
 paySDK.process()
 
