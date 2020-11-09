@@ -98,7 +98,7 @@
 - (IBAction)hostedClick:(id)sender {
     merchantId = mIdText.text;
    
-    paySDK.paymentDetails = [[PayData alloc] initWithChannelType:PayChannelWEBVIEW                              envType:EnvTypeSANDBOX amount:amountText.text                                      payGate:PayGatePAYDOLLAR currCode:CurrencyCodeHKD                                  payType:payTypeNORMAL_PAYMENT orderRef: orderRef                                   payMethod:@"CC" lang:LanguageENGLISH merchantId: merchantId                        remark:@"" payRef:@"" resultpage:resultPage extraData:nil];
+    paySDK.paymentDetails = [[PayData alloc] initWithChannelType:PayChannelWEBVIEW envType:EnvTypeSANDBOX amount:amountText.text payGate:PayGatePAYDOLLAR currCode:CurrencyCodeHKD payType:payTypeNORMAL_PAYMENT orderRef: orderRef payMethod:@"CC" lang:LanguageENGLISH merchantId: merchantId remark:@"" payRef:@"" resultpage:resultPage extraData:nil];
     
     [paySDK process];
 }

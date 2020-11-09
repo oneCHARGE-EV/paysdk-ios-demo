@@ -1,7 +1,7 @@
 
 
 # Schedule Pay
-
+* Swift Code
 ```
 paySDK.cardDetails = CardDetails(cardHolderName: “firstcard”,
                                  cardNo: "4012000000020086”,
@@ -41,3 +41,39 @@ paySDK.process()
 ```
 
 <img width="252" alt="image" src="https://user-images.githubusercontent.com/57219862/80248316-4b4bf000-868d-11ea-87cc-7c86135fcc8c.png">
+
+* Objective C Code
+```
+NSDictionary *dic = @{@"appId" : @"SP",
+                      @"appRef" : @"2018102409220001",
+                      @"schType" : @"Day",
+                      @"schStatus" : @"Active",
+                      @"nSch" : @"1",
+                      @"sMonth" : @"4",
+                      @"sDay" : @"26",
+                      @"sYear" : @"2019",
+                      @"eMonth" : @"",
+                      @"eDay" : @"",
+                      @"eYear" : @"",
+                      @"name" : @"Name",
+                      @"email" : @"name@abc.com"};
+
+extraData = [[NSMutableDictionary alloc] initWithDictionary: dic];
+
+paySDK.paymentDetails.cardDetails = [[CardDetails alloc] initWithCardHolderName:@"Test Card"                                                               cardNo:cardNoText.text                                                                            expMonth:expMonthText.text 
+                                                         expYear:expYearText.text securityCode:securityCodeText.text];
+                                                         
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT                                                             envType: EnvTypeSANDBOX 
+                                         amount: @"2" 
+                                         payGate: PayGatePAYDOLLAR 
+                                         currCode: CurrencyCodeHKD 
+                                         payType: payTypeNORMAL_PAYMENT 
+                                         orderRef: @"2018102409220001” 
+                                         payMethod: @"VISA" 
+                                         lang: LanguageENGLISH 
+                                         merchantId: @"1" 
+                                         remark: @"" 
+                                         payRef: @"" 
+                                         resultpage: @"F" 
+                                         extraData: extraData];
+```

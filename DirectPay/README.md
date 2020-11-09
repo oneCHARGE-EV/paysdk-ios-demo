@@ -2,6 +2,7 @@
 
 # Direct Payment
 
+* Swift Code
 ```
 paySDK.cardDetails = CardDetails(cardHolderName: “first card”,
                                  cardNo: "4012000000020086”,
@@ -27,3 +28,25 @@ paySDK.process()
 
 ```
 <img width="254" alt="image" src="https://user-images.githubusercontent.com/57219862/80223077-6d317c80-8665-11ea-96c4-61e46dca606a.png">
+
+* Objective C Code
+```
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType:PayChannelDIRECT                                                              envType:EnvTypeSANDBOX 
+                                         amount:amountText.text 
+                                         payGate:PayGatePAYDOLLAR 
+                                         currCode:CurrencyCodeHKD 
+                                         payType:payTypeNORMAL_PAYMENT 
+                                         orderRef: orderRef 
+                                         payMethod:@"VISA" 
+                                         lang:LanguageENGLISH 
+                                         merchantId: merchantId 
+                                         remark:@"" 
+                                         payRef:@"" 
+                                         resultpage:resultPage 
+                                         extraData:nil];
+
+paySDK.paymentDetails.cardDetails = [[CardDetails alloc] initWithCardHolderName:@"Test Card"                                                               cardNo:cardNoText.text                                                                            expMonth:expMonthText.text 
+                                                         expYear:expYearText.text securityCode:securityCodeText.text];
+
+[paySDK process];
+```

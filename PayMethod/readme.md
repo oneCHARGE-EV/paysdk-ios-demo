@@ -1,5 +1,6 @@
 # Pay Method
 
+* Swift Code
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 envType: EnvType.SANDBOX,
@@ -13,13 +14,38 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 merchantId: "88146271",
                                 remark: "",
                                 payRef: "",
-                                extraData :[])
+                                resultpage: "F"
+                                extraData : [])
                                 
 paySDK.query(action: "PAYMENT_METHOD")
 
 //NOTE : For allowed Pay Method Response will come in below format 
 
 func payMethodOptions(method: PaymentOptionsDetail) {
+        //process the method       
+}
+```
+* Objective C Code
+```
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelNONE
+                                         envType: EnvTypeSANDBOX
+                                         amount: @"1"
+                                         payGate: PayGatePAYDOLLAR
+                                         currCode: CurrencyCodeHKD
+                                         payType: payTypeNORMAL_PAYMENT
+                                         orderRef: "2018102409220001”,
+                                         payMethod: @"ALL"
+                                         lang: LanguageENGLISH
+                                         merchantId: @"1"
+                                         remark: @"123"
+                                         payRef: @""
+                                         resultpage: resultPage
+                                         extraData: nil];
+
+[paySDK queryWithAction:@"PAYMENT_METHOD"];
+
+//NOTE : For allowed Pay Method Response will come in below format 
+- (void)payMethodOptionsWithMethod:(PaymentOptionsDetail * _Nonnull)method {
         //process the method       
 }
 ```

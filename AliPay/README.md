@@ -17,25 +17,47 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 			returntrue
 }
 
-
+* Swift Code
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
-				envType: EnvType.SANDBOX,
-				amount: "10",
-				payGate: PayGate.PAYDOLLAR,
-				currCode:currencyCode.HKD,
-				payType: payType.NORMAL_PAYMENT,
-				orderRef: "560200353Ref",
-				payMethod: "ALIPAYHKAPP", // FOR ALIPAY HK
+                                envType: EnvType.SANDBOX,
+                                amount: "10",
+                                payGate: PayGate.PAYDOLLAR,
+                                currCode:currencyCode.HKD,
+                                payType: payType.NORMAL_PAYMENT,
+                                orderRef: "560200353Ref",
+                                payMethod: "ALIPAYHKAPP", // FOR ALIPAY HK
                                 //payMethod: "ALIPAYCNAPP" // FOR ALIPAY CN
                                 //payMethod: "ALIPAYAPP" // FOR ALIPAY GLOBAL
-				lang: Language.ENGLISH, 
-				merchantId: "560200353",
-				remark: "test",
-				payRef: "",
-				extraData : [:])
+                                lang: Language.ENGLISH, 
+                                merchantId: "560200353",
+                                remark: "test",
+                                payRef: "",
+                                resultPage: "F"
+                                extraData : [:])
 
 paySDK.process();
 
 ```
 
+* Objective C Code
+```
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT 
+                                         envType: EnvTypeSANDBOX 
+                                         amount: @"1.0" 
+                                         payGate: PayGatePAYDOLLAR 
+                                         currCode: CurrencyCodeHKD 
+                                         payType: payTypeNORMAL_PAYMENT 
+                                         orderRef: orderRef 
+                                         payMethod: @"ALIPAYHKAPP" // FOR ALIPAY HK
+                                         //payMethod: @"ALIPAYCNAPP" // FOR ALIPAY CN
+                                         //payMethod: @"ALIPAYAPP" // FOR ALIPAY GLOBAL
+                                         lang: LanguageENGLISH 
+                                         merchantId: merchantId 
+                                         remark: @"" 
+                                         payRef: @"" 
+                                         resultpage: @"F" 
+                                         extraData: nil];
+
+[paySDK process];
+```

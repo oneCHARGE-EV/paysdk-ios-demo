@@ -39,21 +39,44 @@ Merchant must provide application bundle id and universal link of app (optional)
     
 ```
 * Initialize PayData
-
+* Swift Code
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
-				envType: EnvType.SANDBOX,
-				amount: 0.1,
-				payGate: PayGate.PAYDOLLAR,
-				currCode: currencyCode.HKD,
-				payType: payType.NORMAL_PAYMENT,
-				orderRef: "2018102409220001",
-				payMethod: "WECHATAPP",
-				lang: Language.ENGLISH,
-				merchantId: "1",
-				remark: "test",
-				extraData : ["weChatUniversalLink":"https://<domain-name>.com"])
+                                envType: EnvType.SANDBOX,
+                                amount: 0.1,
+                                payGate: PayGate.PAYDOLLAR,
+                                currCode: currencyCode.HKD,
+                                payType: payType.NORMAL_PAYMENT,
+                                orderRef: "2018102409220001",
+                                payMethod: "WECHATAPP",
+                                lang: Language.ENGLISH,
+                                merchantId: "1",
+                                remark: "test",
+                                extraData : ["weChatUniversalLink":"https://<domain-name>.com"])
                                 
 paySDK.process()
 
+```
+
+* Objective C Code
+```
+NSDictionary *dic =@{@"wechatUniversalLink": @"https://<domain-name>.com"};
+
+extraData = [[NSMutableDictionary alloc] initWithDictionary: dic];
+
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT                                                             envType: EnvTypeSANDBOX 
+                                         amount: @"1.0" 
+                                         payGate: PayGatePAYDOLLAR 
+                                         currCode: CurrencyCodeHKD 
+                                         payType: payTypeNORMAL_PAYMENT 
+                                         orderRef: @"2018102409220001" 
+                                         payMethod: @"WECHATAPP" 
+                                         lang: LanguageENGLISH 
+                                         merchantId: @"1" 
+                                         remark: @"" 
+                                         payRef: @"" 
+                                         resultpage: @"F" 
+                                         extraData: nil];
+
+[paySDK process];
 ```

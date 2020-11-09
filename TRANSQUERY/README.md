@@ -1,5 +1,6 @@
 # Transaction Query
 
+* Swift Code
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 envType: EnvType.SANDBOX,
@@ -13,7 +14,8 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 merchantId: "88146271",
                                 remark: "",
                                 payRef: "",
-                                extraData :[])
+                                resultPage: "F"
+                                extraData : [:])
 
 paySDK.query(action:"TX_QUERY")
 
@@ -22,3 +24,28 @@ paySDK.query(action:"TX_QUERY")
        //PROCESS RESPONSE
  }
  ```
+* Objective C Code 
+```
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
+                                                     envType: EnvTypeSANDBOX
+                                                      amount: @"1"
+                                                     payGate: PayGatePAYDOLLAR
+                                                    currCode: CurrencyCodeHKD
+                                                     payType: payTypeNORMAL_PAYMENT
+                                                    orderRef: @"2018102409220001"
+                                                   payMethod: @"ALL"
+                                                        lang: LanguageENGLISH
+                                                  merchantId: merchantId
+                                                      remark: @"123"
+                                                      payRef: @"" 
+                                                  resultpage: @"F"
+                                                   extraData: nil];
+
+[paySDK queryWithAction:@"TX_QUERY"];
+
+//NOTE : For Trans Query Response will come in below format
+- (void)transQueryResultsWithResult:(TransQueryResults * _Nonnull)result {
+        //PROCESS RESPONSE
+}
+
+```

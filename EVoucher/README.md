@@ -1,6 +1,6 @@
 
 # EVoucher
-
+* Swift Code
 ```
 extraData = ["eVoucher": "T",
              "eVClassCode": "0001"]
@@ -19,9 +19,35 @@ paySDK.paymentDetails = PayData(channelType : PayChannel.WEBVIEW,
                                 merchantId : "88144121",
                                 remark : "",
                                 payRef: "",
+                                resultpage: "F",
                                 extraData: extraData)
 
                 
 paySDK.process();
 
 ```
+* Objective C Code
+```
+NSDictionary *dic =@{@"eVoucher": @"T",
+                     @"eVClassCode": @"0001"};
+                     
+extraData = [[NSMutableDictionary alloc] initWithDictionary: dic];
+```
+```
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelWEBVIEW                                                            envType: EnvTypeSANDBOX 
+                                         amount: @"2.0" 
+                                         payGate: PayGatePAYDOLLAR 
+                                         currCode: CurrencyCodeHKD 
+                                         payType: payTypeNORMAL_PAYMENT 
+                                         orderRef: orderRef 
+                                         payMethod: @"VISA" 
+                                         lang: LanguageENGLISH 
+                                         merchantId: merchantId 
+                                         remark: @"" 
+                                         payRef: @"" 
+                                         resultpage: "@F" 
+                                         extraData: nil];
+
+[paySDK process];
+```
+

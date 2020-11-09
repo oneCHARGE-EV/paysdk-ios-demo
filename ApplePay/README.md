@@ -18,24 +18,24 @@
 ### Set the Apple Pay button:
    Set the button type and button style for the button as
    
-    
+
     btnApplePay.setApplePayButton(btnType: ApplePayButtonType.Buy, btnStyle: ApplePayButtonStyle.Black, view : self.view)
     
 
-
+* Swift Code
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
-				envType: EnvType.SANDBOX,
-	                        amount: "10",
-	                        payGate: PayGate.PAYDOLLAR,
-	                        currCode:currencyCode.HKD,
-	                        payType: payType.NORMAL_PAYMENT,
-	                        orderRef: "560200353Ref",
-	                        payMethod: "APPLEPAY",
-				lang: Language.ENGLISH, 
-	                        merchantId: "560200353",
-	                        remark: "test",
-	                        extraData : ["apple_countryCode" : "US",
+                                envType: EnvType.SANDBOX,
+                                amount: "10",
+                                payGate: PayGate.PAYDOLLAR,
+                                currCode:currencyCode.HKD,
+                                payType: payType.NORMAL_PAYMENT,
+                                orderRef: "560200353Ref",
+                                payMethod: "APPLEPAY",
+                                lang: Language.ENGLISH, 
+                                merchantId: "560200353",
+                                remark: "test",
+                                extraData : ["apple_countryCode" : "US",
                                              "apple_currencyCode" : "USD",
                                              "apple_billingContactEmail" : "abc@gmail.com",
                                              "apple_billingContactPhone" : "1234567890",
@@ -47,3 +47,30 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
 paySDK.process();
 ```
 
+*Objective C Code
+```
+NSDictionary *arr = @{@"apple_countryCode" : @"US",
+                      @"apple_currencyCode" : @"USD",
+                      @"apple_billingContactEmail" : @"abc@gmail.com",
+                      @"apple_billingContactPhone" : @"1234567890",
+                      @"apple_billingContactGivenName" : @"ABC",
+                      @"apple_billingContactFamilyName" : @"XYZ",
+                      @"apple_requiredBillingAddressFields" : @""};
+                      
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
+                                         envType: EnvTypeSANDBOX
+                                         amount: @"1"
+                                         payGate: PayGatePAYDOLLAR
+                                         currCode: CurrencyCodeHKD
+                                         payType: payTypeNORMAL_PAYMENT
+                                         orderRef: [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000000000]
+                                         payMethod: @"APPLEPAY"
+                                         lang: LanguageENGLISH
+                                         merchantId: @"1"
+                                         remark: @"test"
+                                         payRef: @""
+                                         resultpage: resultPage
+                                         extraData: arr];
+
+[paySDK process];
+```
