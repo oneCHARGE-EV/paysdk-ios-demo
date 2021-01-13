@@ -1,10 +1,5 @@
 # PayMe
 
-## Initialization Step: 
-
-* Add "Domain" – Here you need to specify third level domain. (www/xp1) in paysdk.plist file.
-
-
 ### Initialize PayData
 * Swift Code
 ```
