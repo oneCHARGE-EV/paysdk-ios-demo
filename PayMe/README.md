@@ -1,10 +1,5 @@
 # PayMe
 
-## Initialization Step: 
-
-* Add "Domain" – Here you need to specify third level domain. (www/xp1) in paysdk.plist file.
-
-
 ### Initialize PayData
 * Swift Code
 ```
@@ -23,10 +18,10 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 resultpage: "F",
                                 extraData : [:])
 
-paysdk.paymentDetails.callBackParam = CallBackParam(successUrl : "xxx://abc//success",
-                                                    cancelUrl : "xxx://abc//cancelled",
+paysdk.paymentDetails.callBackParam = CallBackParam(successUrl: "xxx://abc//success",
+                                                    cancelUrl: "xxx://abc//cancelled",
                                                     errorUrl: "xxx://abc//error",
-                                                    failUrl : "xxx://abc//fail")
+                                                    failUrl: "xxx://abc//fail")
                                                     
 paySDK.process()
 
@@ -48,9 +43,9 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelWEBVIEW 
                                          resultpage: @"F" 
                                          extraData: nil];
                                          
-paySDK.paymentDetails.callBackParam = [[CallBackParam alloc] initWithsuccessUrl: @"xxx://abc//success"                                                              cancelUrl: @"xxx://abc//cancelled",
-                                                             errorUrl : @"xxx://abc//success",
-                                                             failUrl : @"xxx://abc//cancelled"];
+paySDK.paymentDetails.callBackParam = [[CallBackParam alloc] initWithsuccessUrl: @"xxx://abc//success",                                                               cancelUrl: @"xxx://abc//cancelled",
+                                                             errorUrl: @"xxx://abc//error",
+                                                             failUrl: @"xxx://abc//fail"];
 
 [paySDK process];
 ```
