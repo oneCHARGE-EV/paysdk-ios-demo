@@ -14,8 +14,6 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 lang: Language.ENGLISH,
                                 merchantId: "1",
                                 remark: "test",
-                                payRef: "",
-                                resultpage: "F",
                                 extraData : [:])
 
 paysdk.paymentDetails.callBackParam = CallBackParam(successUrl: "xxx://abc//success",
@@ -29,7 +27,8 @@ paySDK.process()
 * Objective C Code
 
 ```
-paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelWEBVIEW                                                                 envType: EnvTypeSANDBOX 
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
+                                         envType: EnvTypeSANDBOX 
                                          amount: @"2.0" 
                                          payGate: PayGatePAYDOLLAR 
                                          currCode: CurrencyCodeHKD 
@@ -37,15 +36,20 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelWEBVIEW 
                                          orderRef: orderRef 
                                          payMethod: @"PayMe" 
                                          lang: LanguageENGLISH 
-                                         merchantId: merchantId 
-                                         remark: @"" 
-                                         payRef: @"" 
-                                         resultpage: @"F" 
+                                         merchantId: 1 
+                                         remark: @"test" 
                                          extraData: nil];
                                          
+<<<<<<< HEAD
 paySDK.paymentDetails.callBackParam = [[CallBackParam alloc] initWithsuccessUrl: @"xxx://abc//success",                                                               cancelUrl: @"xxx://abc//cancelled",
                                                              errorUrl: @"xxx://abc//error",
                                                              failUrl: @"xxx://abc//fail"];
+=======
+paySDK.paymentDetails.callBackParam = [[CallBackParam alloc] initWithsuccessUrl: @"xxx://abc//success"
+                                                             cancelUrl: @"xxx://abc//cancelled",
+                                                             errorUrl : @"xxx://abc//success",
+                                                             failUrl : @"xxx://abc//cancelled"];
+>>>>>>> 0f3f27f88a398d9974ac59259bdfd1cb5744db9b
 
 [paySDK process];
 ```
