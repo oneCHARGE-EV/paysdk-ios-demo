@@ -35,14 +35,16 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 lang: Language.ENGLISH, 
                                 merchantId: "560200353",
                                 remark: "test",
+                                payRef: "",
+                                resultpage: "F",
                                 extraData : ["apple_countryCode" : "US",
                                              "apple_currencyCode" : "USD",
                                              "apple_billingContactEmail" : "abc@gmail.com",
                                              "apple_billingContactPhone" : "1234567890",
                                              "apple_billingContactGivenName" : "ABC",
                                              "apple_billingContactFamilyName" : "XYZ",
-                                             "apple_requiredBillingAddressFields" : ""])
-                                             
+                                             "apple_requiredBillingAddressFields" : "",
+                                             "apple_merchant_name" : "AsiapayDemo"])
 
 paySDK.process();
 ```
@@ -55,7 +57,8 @@ NSDictionary *arr = @{@"apple_countryCode" : @"US",
                       @"apple_billingContactPhone" : @"1234567890",
                       @"apple_billingContactGivenName" : @"ABC",
                       @"apple_billingContactFamilyName" : @"XYZ",
-                      @"apple_requiredBillingAddressFields" : @""};
+                      @"apple_requiredBillingAddressFields" : @"",
+                      "apple_merchant_name" : @"Asiapay"};
                       
 paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
                                          envType: EnvTypeSANDBOX

@@ -14,7 +14,7 @@ var paySDK = PaySDKClass.shared
 
 func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 			paySDK.processOrder(url: url)
-			returntrue
+			return true
 }
 
 * Swift Code
@@ -33,7 +33,7 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 merchantId: "560200353",
                                 remark: "test",
                                 payRef: "",
-                                resultPage: "F"
+                                resultPage: "F",
                                 extraData : [:])
 
 paySDK.process();

@@ -32,22 +32,23 @@ paySDK.process()
 
 * Objective C Code
 ```
-paySDK.paymentDetails = [[PayData alloc] initWithChannelType:PayChannelDIRECT                                                              envType:EnvTypeSANDBOX 
-                                         amount:amountText.text 
-                                         payGate:PayGatePAYDOLLAR 
-                                         currCode:CurrencyCodeHKD 
-                                         payType:payTypeNORMAL_PAYMENT 
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT                                                              envType: EnvTypeSANDBOX 
+                                         amount: amountText.text 
+                                         payGate: PayGatePAYDOLLAR 
+                                         currCode: CurrencyCodeHKD 
+                                         payType: payTypeNORMAL_PAYMENT 
                                          orderRef: orderRef 
-                                         payMethod:@"VISA" 
-                                         lang:LanguageENGLISH 
+                                         payMethod: @"VISA" 
+                                         lang: LanguageENGLISH 
                                          merchantId: merchantId 
-                                         remark:@"" 
-                                         payRef:@"" 
-                                         resultpage:resultPage 
-                                         extraData:nil];
+                                         remark: @"" 
+                                         payRef: @"" 
+                                         resultpage: resultPage 
+                                         extraData: nil];
 
-paySDK.paymentDetails.cardDetails = [[CardDetails alloc] initWithCardHolderName:@"Test Card"                                                               cardNo:cardNoText.text                                                                            expMonth:expMonthText.text 
-                                                         expYear:expYearText.text securityCode:securityCodeText.text];
+paySDK.paymentDetails.cardDetails = [[CardDetails alloc] initWithCardHolderName: @"Test Card"                                                              cardNo: cardNoText.text                                                                           expMonth: expMonthText.text 
+                                                         expYear: expYearText.text 
+                                                         securityCode: securityCodeText.text];
 
 [paySDK process];
 ```

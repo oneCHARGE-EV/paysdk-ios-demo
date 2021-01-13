@@ -22,7 +22,8 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 lang: Language.ENGLISH,
                                 merchantId: "88146271",
                                 remark: "",
-                                
+                                payRef: "", 
+                                resultpage: "F",
                                 extraData: ["addNewMember": true,
                                             "memberPay_service": "T",
                                             "memberPay_memberId": "Member01",
@@ -61,7 +62,7 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT  
                                          merchantId: @"1" 
                                          remark: @"" 
                                          payRef: @"" 
-                                         resultpage: "@F" 
+                                         resultpage: @"F" 
                                          extraData: extraData];
 
 [paySDK process];
@@ -86,7 +87,8 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 lang: Language.ENGLISH,
                                 merchantId: "88146271",
                                 remark: "",
-
+                                payRef: "",
+                                resultpage: "F",
                                 extraData: ["addNewMember": false,
                                             "memberPay_service": "T",
                                             "memberPay_memberId": "Member01",
@@ -125,7 +127,7 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT  
                                          merchantId: @"1" 
                                          remark: @"" 
                                          payRef: @"" 
-                                         resultpage: "@F" 
+                                         resultpage: @"F" 
                                          extraData: extraData];
 
 [paySDK process];

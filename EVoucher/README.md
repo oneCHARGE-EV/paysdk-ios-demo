@@ -45,7 +45,7 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelWEBVIEW 
                                          merchantId: merchantId 
                                          remark: @"" 
                                          payRef: @"" 
-                                         resultpage: "@F" 
+                                         resultpage: @"F" 
                                          extraData: nil];
 
 [paySDK process];

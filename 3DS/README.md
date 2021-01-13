@@ -14,6 +14,8 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 lang: Language.ENGLISH,
                                 merchantId: "1",
                                 remark: "",
+                                payRef: "",
+                                resultpage: "F",
                                 extraData :[:])
 
 paySDK.paymentDetails.cardDetails = CardDetails(cardHolderName: “abcabc”,
@@ -60,7 +62,7 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelWEBVIEW
                                          payMethod: @"THREEDS2"
                                          lang: LanguageENGLISH
                                          merchantId: @"1234"
-                                         remark:@"123"
+                                         remark: @"123"
                                          payRef: @""
                                          resultpage: @"F"
                                          extraData: nil];

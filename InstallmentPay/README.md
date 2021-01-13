@@ -19,7 +19,8 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 lang: Language.ENGLISH,
                                 merchantId: "88146271",
                                 remark: "",
-                                                                
+                                payRef: "", 
+                                resultpage: "F",
                                 extraData: ["installment_service " : "T",
                                             "installment_period": 3,
                                             "installOnly": "T"])
@@ -55,9 +56,9 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT  
                                          payMethod: @"VISA" 
                                          lang: LanguageENGLISH 
                                          merchantId: @"1" 
-                                         remark: @"" 
-                                         payRef: @"" 
-                                         resultpage: "@F" 
+                                         remark: @""
+                                         payRef: @""
+                                         resultpage: @"F" 
                                          extraData: extraData];
 
 [paySDK process];

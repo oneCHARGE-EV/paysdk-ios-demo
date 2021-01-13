@@ -36,7 +36,7 @@ iOS Version: 11.0 and above
 * Or use CocoaPods. CocoaPods is a dependency manager for Cocoa projects. For usage and installation instructions, visit https://guides.cocoapods.org/using/using-cocoapods.html for more detail. To integrate PaySDK into your Xcode project using CocoaPods, specify it in your Podfile:
 
   ```
-    pod 'AP_PaySDK', '2.1.8'
+    pod 'AP_PaySDK', '2.1.10'
     
   ```
  
@@ -177,9 +177,11 @@ Member Pay | [Member Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/ma
 Installment Pay | [Installmet Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/InstallmentPay/README.md)
 Schedule Pay | [Schedule Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/SchedulePay/README.md)
 Promo Pay | [Promo Pay](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PromoPay/README.md)
+EVoucher | [EVoucher](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/EVoucher)
+PayMe |  [PayMe](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PayMe/README.md)
 Transaction Query | [Transaction Query](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/TRANSQUERY)
 Payment Methods Query | [Payment Methods Query](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/PayMethod)
-EVoucher | [EVoucher](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/EVoucher)
+
 
 ### Collect Payment Result
 
