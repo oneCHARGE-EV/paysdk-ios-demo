@@ -27,15 +27,15 @@ paySDK.process()
 * Objective C Code
 
 ```
-paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannel.DIRECT
-                                         envType: EnvType.SANDBOX 
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
+                                         envType: EnvTypeSANDBOX 
                                          amount: @"2.0" 
-                                         payGate: PayGate.PAYDOLLAR 
-                                         currCode: CurrencyCode.HKD 
-                                         payType: payType.NORMAL_PAYMENT 
+                                         payGate: PayGatePAYDOLLAR 
+                                         currCode: CurrencyCodeHKD 
+                                         payType: payTypeNORMAL_PAYMENT 
                                          orderRef: orderRef 
                                          payMethod: @"PayMe" 
-                                         lang: Language.ENGLISH 
+                                         lang: LanguageENGLISH 
                                          merchantId: 1 
                                          remark: @"test" 
                                          extraData: nil];
