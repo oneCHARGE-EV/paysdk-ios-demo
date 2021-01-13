@@ -1,4 +1,4 @@
-# Octopus Pay
+# PayMe
 
 ## Initialization Step: 
 
@@ -40,7 +40,7 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelWEBVIEW 
                                          currCode: CurrencyCodeHKD 
                                          payType: payTypeNORMAL_PAYMENT 
                                          orderRef: orderRef 
-                                         payMethod: @"OCTOPUS" 
+                                         payMethod: @"PayMe" 
                                          lang: LanguageENGLISH 
                                          merchantId: merchantId 
                                          remark: @"" 
