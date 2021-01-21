@@ -36,7 +36,7 @@ iOS Version: 11.0 and above
 * Or use CocoaPods. CocoaPods is a dependency manager for Cocoa projects. For usage and installation instructions, visit https://guides.cocoapods.org/using/using-cocoapods.html for more detail. To integrate PaySDK into your Xcode project using CocoaPods, specify it in your Podfile:
 
   ```
-    pod 'AP_PaySDK', '2.1.10'
+    pod 'AP_PaySDK', '2.3.1'
     
   ```
  
@@ -139,9 +139,11 @@ Also Merchant can disable ATS by
 Create the paysdk.plist file in the app with the following attributes      
     
 RSA Public Key(SDK_RSA_Publickey) :- Here you need to specify the RSA Public Key without header and Merchant_ID(optional)
+Doamin URL (Domain): Custom Domain name, The value of the key can be blank.
 e.g
 
-![image](https://user-images.githubusercontent.com/57220911/79866991-4112c300-83fb-11ea-82e9-4bf8a5575565.png)
+
+<img width="406" alt="Screenshot 2021-01-22 at 1 51 30 AM" src="https://user-images.githubusercontent.com/57219862/105408838-80ee2b80-5c55-11eb-8f5b-085ddbf88615.png">
 
 ### Initialize PaySdk
 

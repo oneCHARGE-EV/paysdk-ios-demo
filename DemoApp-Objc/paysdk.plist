@@ -4,5 +4,7 @@
 <dict>
 	<key>SDK_RSA_PublicKey</key>
 	<string></string>
+	<key>Domain</key>
+	<string></string>
 </dict>
 </plist>
