@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import <AP_PaySDK/AP_PaySDK.h>
 #import <AP_PaySDK/AP_PaySDK-Swift.h>
-#import "IQKeyboardManager.h"
+@import IQKeyboardManagerSwift;
 @import AP_PaySDK;
 
 
@@ -226,6 +226,17 @@
     extraData = [[NSMutableDictionary alloc] initWithDictionary: dic];
     
     paySDK.paymentDetails = [[PayData alloc] initWithChannelType:PayChannelDIRECT envType:EnvTypeSANDBOX amount:@"1.0" payGate:PayGatePAYDOLLAR currCode:CurrencyCodeHKD payType:payTypeNORMAL_PAYMENT orderRef: orderRef payMethod:@"WECHATAPP" lang:LanguageENGLISH merchantId: merchantId remark:@"" payRef:@"" resultpage:resultPage extraData:nil];
+    
+    [paySDK process];
+}
+
+- (IBAction)PayMeClick:(id)sender{
+    
+    paySDK.paymentDetails = [[PayData alloc] initWithChannelType:PayChannelDIRECT envType:EnvTypeSANDBOX amount:@"1.81" payGate:PayGatePAYDOLLAR currCode:CurrencyCodeHKD payType:payTypeNORMAL_PAYMENT orderRef:orderRef payMethod:@"PayMe" lang:LanguageENGLISH merchantId: merchantId remark:@"" payRef:@"" resultpage:resultPage extraData:nil];
+
+    paySDK.paymentDetails.callBackParam = [[CallBackParam alloc] initWithSuccessUrl:@"xxx://abc//success"                                                           cancelUrl : @"xxx://abc//cancelled",
+                                                                 errorUrl: @"xxx://abc//error",
+                                                                 failUrl : @"xxx://abc//fail"];
     
     [paySDK process];
 }

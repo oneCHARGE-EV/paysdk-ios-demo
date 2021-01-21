@@ -257,7 +257,7 @@ class ViewController: FormViewController {
             <<< ButtonRow() { (row: ButtonRow) in
                 row.title = "APPLEPAY"
             }.onCellSelection({ (str, row) in
-                self.processWechat(sender: "APPLEPAY")
+                self.processWechat(sender: "")
             })
             <<< ButtonRow() { (row: ButtonRow) in
                 row.title = "THREEDS2"
@@ -293,6 +293,11 @@ class ViewController: FormViewController {
                 row.title = "EASYPAYMENTFORM"
             }.onCellSelection({ (str, row) in
                 self.eASYPAYMENTFORM()
+            })
+            <<< ButtonRow() { (row: ButtonRow) in
+                row.title = "PAYME"
+            }.onCellSelection({ (str, row) in
+                self.payMe()
             })
             <<< ButtonRow() { (row: ButtonRow) in
                 row.title = "TRANS QUERY"
@@ -474,7 +479,8 @@ class ViewController: FormViewController {
                          "apple_billingContactPhone" : "1234567890",
                          "apple_billingContactGivenName" : "ABC",
                          "apple_billingContactFamilyName" : "XYZ",
-                         "apple_requiredBillingAddressFields" : ""]
+                         "apple_requiredBillingAddressFields" : "",
+                         "apple_merchant_name" : "Demo"]
         } else if sender == "WECHAT" {
             extraData = [
                 "wechatUniversalLink": "https://paydollarmobileapp/"
@@ -483,7 +489,14 @@ class ViewController: FormViewController {
             extraData = ["eVoucher": "T",
                          "eVClassCode": "0001"]
         } else {
-            extraData = [:]
+            extraData = ["apple_countryCode" : "US",
+                         "apple_currencyCode" : "USD",
+                         "apple_billingContactEmail" : "abc@gmail.com",
+                         "apple_billingContactPhone" : "1234567890",
+                         "apple_billingContactGivenName" : "ABC",
+                         "apple_billingContactFamilyName" : "XYZ",
+                         "apple_requiredBillingAddressFields" : "",
+                         "apple_merchant_name" : "Demo"]
         }
         paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                         envType: EnvType.SANDBOX,
@@ -501,7 +514,6 @@ class ViewController: FormViewController {
                                         extraData :  extraData)
         paySDK.process()
     }
-    
     
     
     func eASYPAYMENTFORM() {
@@ -523,6 +535,39 @@ class ViewController: FormViewController {
         paySDK.process()
     }
     
+    
+    func payMe() {
+        let extraData = ["":""]
+        paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
+                                        envType: .SANDBOX, //.SANDBOX,
+                                        amount: (form1?.allSections[0][7].baseValue as? String) ?? "",
+                                        payGate: payGateForPG!,//PayGate.PAYDOLLAR,
+                                        currCode: currCode!,//CurrencyCode.MYR,
+                                        payType: payType.NORMAL_PAYMENT,
+                                        orderRef: (form1?.allSections[0][2].baseValue as? String) ?? "",
+                                        payMethod: "PayMe",
+                                        lang: Language.ENGLISH,
+                                        merchantId: (form1?.allSections[0][2].baseValue as? String) ?? "",
+                                        remark: "123",
+                                        payRef: "",
+                                        resultpage: resultPage,
+                                        extraData: extraData)
+        
+        paySDK.paymentDetails.callBackParam = CallBackParam(successUrl : "xxx://abc//success",
+                                                            cancelUrl : "xxx://abc//cancelled",
+                                                            errorUrl: "xxx://abc//error",
+                                                            failUrl : "xxx://abc//fail")
+        
+//        paysdk.paymentDetails.cardDetails = CardDetails(cardHolderName: "First Last",
+//                                                        cardNo: "4444333322221111",
+//                                                        expMonth: "12",
+//                                                        expYear: "2022",
+//                                                        securityCode: "124")
+        
+        paySDK.process()
+    }
+    
+    
    func transQuery() {
         let extraData = getValues()
         paySDK.paymentDetails = PayData(channelType: PayChannel.NONE,
@@ -542,6 +587,7 @@ class ViewController: FormViewController {
     
         paySDK.query(action: Action.TX_QUERY.rawValue) //"TX_QUERY")
     }
+    
     
     func  paymentOptions() {
         let extraData = getValues()
