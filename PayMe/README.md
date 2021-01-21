@@ -40,16 +40,11 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
                                          remark: @"test" 
                                          extraData: nil];
                                          
-<<<<<<< HEAD
+
 paySDK.paymentDetails.callBackParam = [[CallBackParam alloc] initWithsuccessUrl: @"xxx://abc//success",                                                               cancelUrl: @"xxx://abc//cancelled",
                                                              errorUrl: @"xxx://abc//error",
                                                              failUrl: @"xxx://abc//fail"];
-=======
-paySDK.paymentDetails.callBackParam = [[CallBackParam alloc] initWithsuccessUrl: @"xxx://abc//success"
-                                                             cancelUrl: @"xxx://abc//cancelled",
-                                                             errorUrl : @"xxx://abc//success",
-                                                             failUrl : @"xxx://abc//cancelled"];
->>>>>>> 0f3f27f88a398d9974ac59259bdfd1cb5744db9b
+
 
 [paySDK process];
 ```
