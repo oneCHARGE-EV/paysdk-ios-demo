@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AP_PaySDK/AP_PaySDK-Swift.h>
-//@import IQKeyboardManagerSwift;
-
+#import <AP_PaySDK/AP_PaySDK.h>
 @import AP_PaySDK;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -17,4 +16,3 @@
 @property (strong, nonatomic) UIWindow * window;
 
 @end
-

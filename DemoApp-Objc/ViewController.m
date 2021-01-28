@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import <AP_PaySDK/AP_PaySDK.h>
 #import <AP_PaySDK/AP_PaySDK-Swift.h>
-@import IQKeyboardManagerSwift;
+//#import "IQKeyboardManager.h"
+//@import IQKeyboardManagerSwift;
 @import AP_PaySDK;
 
 
@@ -46,11 +47,13 @@
     [super viewDidLoad];
     paySDK = [PaySDK shared];
     
-    returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
+    returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithController:self];
+//    [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
     
     orderRef = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000000000];
     
-    [[IQKeyboardManager sharedManager] setToolbarManageBehaviour:IQAutoToolbarByPosition];
+//    [[IQKeyboardManager sharedManager] setToolbarManageBehaviour:IQAutoToolbarByPosition];
+    [[IQKeyboardManager shared] setToolbarManageBehaviour:IQAutoToolbarManageBehaviourByPosition];
     
     UiCustomization *customization = [[UiCustomization alloc] init];
     
@@ -234,9 +237,9 @@
     
     paySDK.paymentDetails = [[PayData alloc] initWithChannelType:PayChannelDIRECT envType:EnvTypeSANDBOX amount:@"1.81" payGate:PayGatePAYDOLLAR currCode:CurrencyCodeHKD payType:payTypeNORMAL_PAYMENT orderRef:orderRef payMethod:@"PayMe" lang:LanguageENGLISH merchantId: merchantId remark:@"" payRef:@"" resultpage:resultPage extraData:nil];
 
-    paySDK.paymentDetails.callBackParam = [[CallBackParam alloc] initWithSuccessUrl:@"xxx://abc//success"                                                           cancelUrl : @"xxx://abc//cancelled",
-                                                                 errorUrl: @"xxx://abc//error",
-                                                                 failUrl : @"xxx://abc//fail"];
+    paySDK.paymentDetails.callBackParam = [[CallBackParam alloc] initWithSuccessUrl:@"DemoApp-Objc://success"                                                           cancelUrl : @"DemoApp-Objc://cancel"
+                                                                           errorUrl: @"DemoApp-Objc://error"
+                                                                 failUrl : @"DemoApp-Objc://fail"];
     
     [paySDK process];
 }
@@ -493,7 +496,8 @@
     
     if (isResignedFirstResponder == YES && barButton.invocation)
     {
-        [barButton.invocation invoke];
+        [barButton.invocation invokeFrom:self];
+//        [barButton.invocation invoke];
     }
 }
 

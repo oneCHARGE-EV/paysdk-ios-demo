@@ -47,7 +47,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgf-1o-WcR">
                                 <rect key="frame" x="220" y="719" width="135" height="30"/>
-                                <state key="normal" title="WeCjhat"/>
+                                <state key="normal" title="WeChat"/>
                                 <connections>
                                     <action selector="wechatClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fx6-u9-bLt"/>
                                 </connections>

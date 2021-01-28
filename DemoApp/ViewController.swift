@@ -547,16 +547,16 @@ class ViewController: FormViewController {
                                         orderRef: (form1?.allSections[0][2].baseValue as? String) ?? "",
                                         payMethod: "PayMe",
                                         lang: Language.ENGLISH,
-                                        merchantId: (form1?.allSections[0][2].baseValue as? String) ?? "",
+                                        merchantId: (form1?.allSections[0][1].baseValue as? String) ?? "",
                                         remark: "123",
                                         payRef: "",
                                         resultpage: resultPage,
                                         extraData: extraData)
         
-        paySDK.paymentDetails.callBackParam = CallBackParam(successUrl : "xxx://abc//success",
-                                                            cancelUrl : "xxx://abc//cancelled",
-                                                            errorUrl: "xxx://abc//error",
-                                                            failUrl : "xxx://abc//fail")
+        paySDK.paymentDetails.callBackParam = CallBackParam(successUrl : "DemoApp://success",
+                                                            cancelUrl : "DemoApp://cancel",
+                                                            errorUrl: "DemoApp://error",
+                                                            failUrl : "DemoApp://fail")
         
 //        paysdk.paymentDetails.cardDetails = CardDetails(cardHolderName: "First Last",
 //                                                        cardNo: "4444333322221111",
