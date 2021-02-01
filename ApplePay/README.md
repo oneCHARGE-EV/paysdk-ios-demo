@@ -21,7 +21,7 @@
 
     btnApplePay.setApplePayButton(btnType: ApplePayButtonType.Buy, btnStyle: ApplePayButtonStyle.Black, view : self.view)
     
-** SDK Side Call
+#### SDK Side Call
 * Swift Code
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
@@ -78,7 +78,7 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
 [paySDK process];
 ```
 
-** Merchant Side Call
+#### Merchant Side Call
 * Swift Code
 
 - Generate eWalletPaymentData as 
