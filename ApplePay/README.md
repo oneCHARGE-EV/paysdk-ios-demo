@@ -21,7 +21,7 @@
 
     btnApplePay.setApplePayButton(btnType: ApplePayButtonType.Buy, btnStyle: ApplePayButtonStyle.Black, view : self.view)
     
-
+** SDK Side Call
 * Swift Code
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
@@ -46,10 +46,10 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                              "apple_requiredBillingAddressFields" : "",
                                              "apple_merchant_name" : "AsiapayDemo"])
 
-paySDK.process();
+paySDK.process()
 ```
 
-*Objective C Code
+* Objective C Code
 ```
 NSDictionary *arr = @{@"apple_countryCode" : @"US",
                       @"apple_currencyCode" : @"USD",
@@ -59,6 +59,90 @@ NSDictionary *arr = @{@"apple_countryCode" : @"US",
                       @"apple_billingContactFamilyName" : @"XYZ",
                       @"apple_requiredBillingAddressFields" : @"",
                       "apple_merchant_name" : @"Asiapay"};
+                      
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
+                                         envType: EnvTypeSANDBOX
+                                         amount: @"1"
+                                         payGate: PayGatePAYDOLLAR
+                                         currCode: CurrencyCodeHKD
+                                         payType: payTypeNORMAL_PAYMENT
+                                         orderRef: [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000000000]
+                                         payMethod: @"APPLEPAY"
+                                         lang: LanguageENGLISH
+                                         merchantId: @"1"
+                                         remark: @"test"
+                                         payRef: @""
+                                         resultpage: resultPage
+                                         extraData: arr];
+
+[paySDK process];
+```
+
+** Merchant Side Call
+* Swift Code
+
+- Generate eWalletPaymentData as 
+```
+func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void)
+{
+    var dicStr = ""
+    var parameterDict = [String: Any]()
+    
+    do {
+        let paymentDataDic = try JSONSerialization.jsonObject(with: payment.token.paymentData, options:[]) as! [String : Any]
+        let paymentDataJson = ["token": ["paymentData":paymentDataDic,
+                                         "transactionIdentifier":payment.token.transactionIdentifier,
+                                         "paymentMethod" : [
+                                         "displayName":payment.token.paymentMethod.displayName,
+                                         "network":payment.token.paymentMethod.network?.rawValue,
+                                         "type":"\(payment.token.paymentMethod.type.rawValue)"]]] as [String : Any]
+        
+        b64TokenStr = try! JSONSerialization.data(withJSONObject: paymentDataJson, options: []).base64URLEncodedString()
+   } catch _ { }
+}
+```
+- Pass the generated b64TokenStr to extraData as eWalletPaymentData 
+
+```
+paysdk.paymentDetails = PayData(channelType: .DIRECT,
+                                envType: .SANDBOX,
+                                amount: "1",
+                                payGate: PayGate.PAYDOLLAR,
+                                currCode: CurrencyCode.HKD,
+                                payType: payType.NORMAL_PAYMENT,
+                                orderRef: String(format: "%.0f", NSDate().timeIntervalSince1970 * 1000),
+                                payMethod: "",
+                                lang: Language.ENGLISH,
+                                merchantId: merchantId,
+                                remark: "123",
+                                payRef: "",
+                                resultpage: resultPage,
+                                extraData: ["eWalletPaymentData" : b64TokenStr])
+paysdk.process()
+```
+* Objective C Code
+- Generate eWalletPaymentData as 
+```
+- (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment handler:(void (^)(PKPaymentAuthorizationResult * _Nonnull))completion
+{
+     do {
+         let paymentDataDic = try JSONSerialization.jsonObject(with: payment.token.paymentData, options:[]) as! [String : Any]
+         let paymentDataJson = ["token": ["paymentData":paymentDataDic,
+                                          "transactionIdentifier":payment.token.transactionIdentifier,
+                                          "paymentMethod" : [
+                                          "displayName":payment.token.paymentMethod.displayName,
+                                          "network":payment.token.paymentMethod.network?.rawValue,
+                                          "type":"\(payment.token.paymentMethod.type.rawValue)"]]] as [String : Any]
+         
+         b64TokenStr = try! JSONSerialization.data(withJSONObject: paymentDataJson, options: []).base64URLEncodedString()
+    } catch _ { }
+}
+
+```
+- Pass the generated b64TokenStr to extraData as eWalletPaymentData 
+
+```
+NSDictionary *arr = @{@"eWalletPaymentData" : b64TokenStr};
                       
 paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
                                          envType: EnvTypeSANDBOX
