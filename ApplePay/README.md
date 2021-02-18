@@ -21,9 +21,9 @@
 
     btnApplePay.setApplePayButton(btnType: ApplePayButtonType.Buy, btnStyle: ApplePayButtonStyle.Black, view : self.view)
     
-** SDK Side Call
-* Swift Code
-Note: It is mandatory to add "apple_merchantId" in extraData.
+### SDK Side Call
+#### Swift Code
+    Note: It is mandatory to add "apple_merchantId" in extraData.
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 envType: EnvType.SANDBOX,
@@ -51,8 +51,8 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
 paySDK.process()
 ```
 
-* Objective C Code
-Note: It is mandatory to add "apple_merchantId" in extraData.
+#### Objective C Code
+    Note: It is mandatory to add "apple_merchantId" in extraData.
 ```
 NSDictionary *arr = @{@"apple_countryCode" : @"HK",
                       @"apple_currencyCode" : @"HKD",
@@ -83,8 +83,8 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
 [paySDK process];
 ```
 
-** Merchant Side Call
-* Swift Code
+### Merchant Side Call
+#### Swift Code
 
 - Generate eWalletPaymentData as 
 ```
@@ -125,7 +125,7 @@ paysdk.paymentDetails = PayData(channelType: .DIRECT,
                                 extraData: ["eWalletPaymentData" : b64TokenStr])
 paysdk.process()
 ```
-* Objective C Code
+#### Objective C Code
 - Generate eWalletPaymentData as 
 ```
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment handler:(void (^)(PKPaymentAuthorizationResult * _Nonnull))completion
