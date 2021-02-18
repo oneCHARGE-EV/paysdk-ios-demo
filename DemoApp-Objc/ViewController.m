@@ -345,7 +345,10 @@
                           @"apple_billingContactPhone" : @"1234567890",
                           @"apple_billingContactGivenName" : @"ABC",
                           @"apple_billingContactFamilyName" : @"XYZ",
-                          @"apple_requiredBillingAddressFields" : @""};
+                          @"apple_requiredBillingAddressFields" : @"",
+                          @"apple_merchant_name" : @"Demo",
+                          @"apple_merchantId" : @"com.merchant.asiapay.applepay.demo"
+    };
     paySDK.paymentDetails = [[PayData alloc] initWithChannelType:PayChannelDIRECT
                                                          envType:EnvTypeSANDBOX
                                                           amount:@"1"

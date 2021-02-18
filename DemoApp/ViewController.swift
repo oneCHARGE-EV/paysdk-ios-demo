@@ -480,7 +480,9 @@ class ViewController: FormViewController {
                          "apple_billingContactGivenName" : "ABC",
                          "apple_billingContactFamilyName" : "XYZ",
                          "apple_requiredBillingAddressFields" : "",
-                         "apple_merchant_name" : "Demo"]
+                         "apple_merchant_name" : "Demo",
+                         "apple_merchantId" : "com.merchant.asiapay.applepay.demo"
+            ]
         } else if sender == "WECHAT" {
             extraData = [
                 "wechatUniversalLink": "https://paydollarmobileapp/"
@@ -496,7 +498,8 @@ class ViewController: FormViewController {
                          "apple_billingContactGivenName" : "ABC",
                          "apple_billingContactFamilyName" : "XYZ",
                          "apple_requiredBillingAddressFields" : "",
-                         "apple_merchant_name" : "Demo"]
+                         "apple_merchant_name" : "Demo",
+                         "apple_merchantId" : "com.merchant.asiapay.applepay.demo"]
         }
         paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                         envType: EnvType.SANDBOX,

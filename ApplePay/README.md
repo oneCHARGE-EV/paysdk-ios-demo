@@ -3,7 +3,7 @@
 ## Initialization Step: 
 
  1. Add framework to the App
-  	`PassKit.framework`
+      `PassKit.framework`
 
  2. In Xcode , Under “Capabilities”, turn on Apple Pay, and ensure that you have selected the correct merchant ID
     (If you don’t see yours, try tapping the + and enter the name of your merchant ID).
@@ -21,8 +21,9 @@
 
     btnApplePay.setApplePayButton(btnType: ApplePayButtonType.Buy, btnStyle: ApplePayButtonStyle.Black, view : self.view)
     
-#### SDK Side Call
-##### Swift Code
+** SDK Side Call
+* Swift Code
+Note: It is mandatory to add "apple_merchantId" in extraData.
 ```
 paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 envType: EnvType.SANDBOX,
@@ -37,28 +38,32 @@ paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                 remark: "test",
                                 payRef: "",
                                 resultpage: "F",
-                                extraData : ["apple_countryCode" : "US",
-                                             "apple_currencyCode" : "USD",
+                                extraData : ["apple_countryCode" : "HK",
+                                             "apple_currencyCode" : "HKD",
                                              "apple_billingContactEmail" : "abc@gmail.com",
                                              "apple_billingContactPhone" : "1234567890",
                                              "apple_billingContactGivenName" : "ABC",
                                              "apple_billingContactFamilyName" : "XYZ",
                                              "apple_requiredBillingAddressFields" : "",
-                                             "apple_merchant_name" : "AsiapayDemo"])
+                                             "apple_merchant_name" : "AsiapayDemo",
+                                             "apple_merchantId" : "com.merchant.asiapay.applepay.demo"])
 
 paySDK.process()
 ```
 
-##### Objective C Code
+* Objective C Code
+Note: It is mandatory to add "apple_merchantId" in extraData.
 ```
-NSDictionary *arr = @{@"apple_countryCode" : @"US",
-                      @"apple_currencyCode" : @"USD",
+NSDictionary *arr = @{@"apple_countryCode" : @"HK",
+                      @"apple_currencyCode" : @"HKD",
                       @"apple_billingContactEmail" : @"abc@gmail.com",
                       @"apple_billingContactPhone" : @"1234567890",
                       @"apple_billingContactGivenName" : @"ABC",
                       @"apple_billingContactFamilyName" : @"XYZ",
                       @"apple_requiredBillingAddressFields" : @"",
-                      "apple_merchant_name" : @"Asiapay"};
+                      @"apple_merchant_name" : @"Asiapay",
+                      @"apple_merchantId" : @"com.merchant.asiapay.applepay.demo"
+};
                       
 paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
                                          envType: EnvTypeSANDBOX
@@ -78,8 +83,8 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT
 [paySDK process];
 ```
 
-#### Merchant Side Call
-##### Swift Code
+** Merchant Side Call
+* Swift Code
 
 - Generate eWalletPaymentData as 
 ```
@@ -120,7 +125,7 @@ paysdk.paymentDetails = PayData(channelType: .DIRECT,
                                 extraData: ["eWalletPaymentData" : b64TokenStr])
 paysdk.process()
 ```
-##### Objective C Code
+* Objective C Code
 - Generate eWalletPaymentData as 
 ```
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment handler:(void (^)(PKPaymentAuthorizationResult * _Nonnull))completion
