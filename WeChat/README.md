@@ -10,20 +10,21 @@ Merchant must provide application bundle id and universal link of app (optional)
 <key>LSApplicationQueriesSchemes</key>
 <array>
 	<string>weixinULAPI</string>
+	<string>weixin</string>
 </array>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>weixin</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>WECHAT-APP-ID</string>
-			</array>
-		</dict>
-	</array>
+<key>CFBundleURLTypes</key>
+<array>
+	<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLName</key>
+		<string>weixin</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<string>WECHAT-APP-ID</string>
+		</array>
+	</dict>
+</array>
     
 ```
 ![image](https://user-images.githubusercontent.com/57219862/80564609-e20d0980-8a0b-11ea-9779-dbc96a40d4eb.png)
@@ -64,7 +65,8 @@ NSDictionary *dic =@{@"wechatUniversalLink": @"https://<domain-name>.com"};
 
 extraData = [[NSMutableDictionary alloc] initWithDictionary: dic];
 
-paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT                                                             envType: EnvTypeSANDBOX 
+paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelDIRECT                                                             
+                                         envType: EnvTypeSANDBOX 
                                          amount: @"1.0" 
                                          payGate: PayGatePAYDOLLAR 
                                          currCode: CurrencyCodeHKD 
