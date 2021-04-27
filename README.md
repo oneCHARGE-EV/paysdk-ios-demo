@@ -36,7 +36,7 @@ iOS Version: 11.0 and above
 * Or use CocoaPods. CocoaPods is a dependency manager for Cocoa projects. For usage and installation instructions, visit https://guides.cocoapods.org/using/using-cocoapods.html for more detail. To integrate PaySDK into your Xcode project using CocoaPods, specify it in your Podfile:
 
   ```
-    pod 'AP_PaySDK', '2.3.1'
+    pod 'AP_PaySDK', '2.3.7'
     
   ```
  
@@ -161,6 +161,60 @@ class ViewController: UIViewController , PaySDKDelegate
 
 paySDK.delegate = self
 
+
+#### For UICustomization
+
+* Swift Code
+```
+let customization = UiCustomization()
+
+let submitButtonCustomization = ButtonCustomization("Courier", "#FF0000", 15, "#d3d3d3", 4)
+let resendButtonCustomization = ButtonCustomization("Courier", "#FF0000", 15, "#d3d3d3", 4)
+let cancelButtonCustomization = ButtonCustomization("Courier", "#FF0000", 15, "#d3d3d3", 4)
+let nextButtonCustomization = ButtonCustomization("Courier", "#FF0000", 15, "#d3d3d3", 4)
+let continueButtonCustomization = ButtonCustomization("Courier", "#FF0000", 15, "#d3d3d3", 4)
+let labelCustomization = LabelCustomization("Courier", "FF0000", 14, "FF0000", "Courier", 20)
+let textboxCustomization = TextBoxCustomization("Courier", "#FF0000", 14, 5, "#d3d3d3", 4)
+let toolBarCustomization = ToolbarCustomization("Courier", "#FFFFFF", 20, "#000000", "")
+
+try! customization.setButtonCustomization(submitButtonCustomization, .SUBMIT)
+try! customization.setButtonCustomization(resendButtonCustomization, .RESEND)
+try! customization.setButtonCustomization(cancelButtonCustomization, .CANCEL)
+try! customization.setButtonCustomization(nextButtonCustomization, .NEXT)
+try! customization.setButtonCustomization(continueButtonCustomization, .CONTINUE)
+try! customization.setLabelCustomization(labelCustomization)
+try! customization.setTextBoxCustomization(textboxCustomization)
+try! customization.setToolbarCustomization(toolBarCustomization)
+
+paySDK.uiCustomization = customization
+```
+
+* Objective C Code
+```
+UiCustomization *customization = [[UiCustomization alloc] init];
+
+ButtonCustomization *submitButtonCustomization = [[ButtonCustomization alloc] init:@"Courier" :@"#FF0000" :15 :@"#d3d3d3" :4];
+ButtonCustomization *resendButtonCustomization = [[ButtonCustomization alloc] init:@"Courier" :@"#FF0000" :15 :@"#d3d3d3" :4];
+ButtonCustomization *cancelButtonCustomization = [[ButtonCustomization alloc] init:@"Courier" :@"#FF0000" :15 :@"#d3d3d3" :4];
+ButtonCustomization *nextButtonCustomization = [[ButtonCustomization alloc] init:@"Courier" :@"#FF0000" :15 :@"#d3d3d3" :4];
+ButtonCustomization *continueButtonCustomization = [[ButtonCustomization alloc] init:@"Courier" :@"#FF0000" :15 :@"#d3d3d3" :4];
+LabelCustomization *labelCustomization = [[LabelCustomization alloc] init:@"Courier" :@"#FF0000" :14 :@"#FF0000":@"Courier" :20];
+TextBoxCustomization *textBoxCustomization = [[TextBoxCustomization alloc] init:@"Courier" :@"FF0000" :14 :4 :@"FF0000" :4];
+ToolbarCustomization *toolbarCustomization = [[ToolbarCustomization alloc] init:@"Courier" :@"#FFFFFF" :20 :@"#000000" :@"Payment Page"];
+ 
+NSError *err;
+
+[customization setLabelCustomization:labelCustomization error:&err];
+[customization setButtonCustomization:submitButtonCustomization : PaySDKButtonTypeSUBMIT error:&err];
+[customization setButtonCustomization:resendButtonCustomization : PaySDKButtonTypeRESEND error:&err];
+[customization setButtonCustomization:cancelButtonCustomization : PaySDKButtonTypeCANCEL error:&err];
+[customization setButtonCustomization:nextButtonCustomization : PaySDKButtonTypeNEXT error:&err];
+[customization setButtonCustomization:continueButtonCustomization : PaySDKButtonTypeCONTINUE error:&err];
+[customization setTextBoxCustomization:textBoxCustomization error:&err];
+[customization setToolbarCustomization:toolbarCustomization error:&err];
+
+[paySDK setUiCustomization:customization];
+```
 
 ### Initialize Payload
 
