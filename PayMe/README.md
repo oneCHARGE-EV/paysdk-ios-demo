@@ -48,4 +48,17 @@ paySDK.paymentDetails.callBackParam = [[CallBackParam alloc] initWithsuccessUrl:
 
 [paySDK process];
 ```
+### Collect Payment Result
+
+```
+    func paymentResult(result: PayResult) {
+     //process result here
+     
+    }
+```
+* Note: On successfull transaction orderId will get in PayResult as OrderId.
+
+Use OrderId from PayResult to check [Transaction Status](https://github.com/asiapay-lib/paysdk-ios-demo/blob/master/TRANSQUERY).
+
+
 
