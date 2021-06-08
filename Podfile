@@ -6,7 +6,7 @@ target 'DemoApp' do
   use_frameworks!
   #pod 'Eureka'
   pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka.git', :branch => 'xcode12'
-  pod 'AP_PaySDK', '2.3.2'
+  pod 'AP_PaySDK', '2.3.9'
   pod 'NVActivityIndicatorView'
   pod 'Material'
 #  pod 'IQKeyboardManager'
@@ -18,7 +18,7 @@ end
 target 'DemoApp-Objc' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'AP_PaySDK', '2.3.2'
+  pod 'AP_PaySDK', '2.3.9'
   pod 'NVActivityIndicatorView'
   pod 'Material'
   #pod 'IQKeyboardManager'

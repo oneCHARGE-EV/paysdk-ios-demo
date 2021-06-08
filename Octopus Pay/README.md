@@ -57,3 +57,19 @@ paySDK.paymentDetails = [[PayData alloc] initWithChannelType: PayChannelWEBVIEW 
 [paySDK process];
 ```
 
+### Payment response
+* Swift Code
+```
+extension ViewController : PaySDKDelegate {
+func transQueryResults(result: TransQueryResults) {
+      //PROCESS RESPONSE
+      }
+}
+```
+*Objective C Code
+```
+- (void)transQueryResultsWithResult:(TransQueryResults * _Nonnull)result {
+        //PROCESS RESPONSE
+}
+
+```
